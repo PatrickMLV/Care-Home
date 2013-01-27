@@ -11,3 +11,4 @@ http://directory.apache.org/api/user-guide.html
 
 Spring Security
 http://www.mkyong.com/spring-security/spring-security-hello-world-example/
+http://www.objis.com/formation-java/tutoriel-spring-securite-spring-acegi.html#partie1
