@@ -33,7 +33,9 @@ local.properties
 ## Maven
 #################
 
-*/target/*
+CareAtHome/persistence/target/
+CareAtHome/service/target/
+CareAtHome/web/target/
 
 ############
 ## Windows Office
