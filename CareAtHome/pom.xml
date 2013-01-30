@@ -108,6 +108,13 @@
 			<artifactId>spring-faces</artifactId>
 			<version>${spring-webflow.version}</version>
 		</dependency>
+		
+		<!-- Spring ORM -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
 		<!-- Junit 4.11 -->
 		<dependency>
@@ -178,6 +185,14 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>8.2-504.jdbc3</version>
+		</dependency>
+		
+		
+		<!-- JPA -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 
 		<!-- TEST -->
