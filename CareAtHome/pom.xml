@@ -13,7 +13,7 @@
 		<module>service</module>
 		<module>web</module>
 	</modules>
-	
+
 	<prerequisites>
 		<maven>2.1.0</maven>
 	</prerequisites>
@@ -108,7 +108,7 @@
 			<artifactId>spring-faces</artifactId>
 			<version>${spring-webflow.version}</version>
 		</dependency>
-		
+
 		<!-- Spring ORM -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -186,13 +186,19 @@
 			<artifactId>postgresql</artifactId>
 			<version>8.2-504.jdbc3</version>
 		</dependency>
-		
-		
+
 		<!-- JPA -->
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
 			<version>1.0</version>
+		</dependency>
+
+		<!-- LDAP -->
+		<dependency>
+			<groupId>org.apache.directory.shared</groupId>
+			<artifactId>shared-all</artifactId>
+			<version>1.0.0-M13</version>
 		</dependency>
 
 		<!-- TEST -->
@@ -216,5 +222,5 @@
 		</dependency>
 
 	</dependencies>
-	
+
 </project>
