@@ -1,0 +1,85 @@
+version: 1
+
+dn: cn=James Wilson,ou=users,o=care
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+cn: James Wilson
+sn: Wilson
+uid: jwilson
+userPassword:: e1NTSEF9akluZjNBWTZkYjkxSzlaT3RzT1NGTDErTW83YkNFejFmTTN1ekE9P
+ Q==
+
+dn: cn=Lisa Cudy,ou=users,o=care
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+cn: Lisa Cudy
+sn: Cudy
+uid: lcudy
+userPassword:: e1NTSEF9cERER0x2UnRHdThoQ3htaXVtUmphMGhxQU5MaWgyT3dqMUt5dGc9P
+ Q==
+
+dn: ou=groups,o=care
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=Dr House,ou=users,o=care
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+cn: Dr House
+sn: House
+uid: dhouse
+userPassword:: e1NTSEF9OW5MdmFwNGxGNWRYdm5jRk8wMnZwZVg2eTNPL1VlTjRFMm1QSEE9P
+ Q==
+
+dn: ou=users,o=care
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+
+dn: cn=Nurse,ou=groups,o=care
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: Nurse
+uniqueMember: cn=Allison Cameron, ou=users, o=care
+
+dn: cn=Administrator,ou=groups,o=care
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: Administrator
+uniqueMember: cn=Dr House, ou=users, o=care
+
+dn: cn=Executive,ou=groups,o=care
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: Executive
+uniqueMember: cn=James Wilson, ou=users, o=care
+
+dn: o=care
+objectclass: top
+objectclass: organization
+o: care
+
+dn: cn=Responsible,ou=groups,o=care
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: Responsible
+uniqueMember: cn=Lisa Cudy, ou=users, o=care
+
+dn: cn=Allison Cameron,ou=users,o=care
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: person
+objectClass: organizationalPerson
+cn: Allison Cameron
+sn: Cameron
+uid: acameron
+userPassword:: e1NTSEF9ZFh2NTNPUStiZ2p4eWsvR2ZTazB6UGJORzFOM0dJUWtnQStjdHc9P
+ Q==
+
