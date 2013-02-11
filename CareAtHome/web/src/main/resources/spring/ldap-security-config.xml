@@ -53,7 +53,7 @@
 
 	<beans:bean id="paramsLdapFactory"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<beans:property name="location" value="classpath:ldap.properties" />
+		<beans:property name="location" value="classpath:ldap/ldap.properties" />
 	</beans:bean>
 
 	<ldap-server id="ldapServer" url="${ldap.url}" manager-dn="${ldap.admin.cn}"
