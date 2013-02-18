@@ -43,6 +43,7 @@ Servers/
 CareAtHome/persistence/target/
 CareAtHome/service/target/
 CareAtHome/web/target/
+CareAtHome/web2/target/
 
 ############
 ## Windows Office
