@@ -19,15 +19,19 @@
 
 		<p:growl id="growl" showDetail="true" />
 
-		<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="13" type="HYBRID"
+		<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}" type="HYBRID"
 			model="#{mapBean.simpleModel}" style="width:600px;height:400px">
 			<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
 				update="growl" />
 				
 		</p:gmap>
-		<h:outputText value="#{mapBean.test}"></h:outputText>
+		<br/>
+		centerLat : 
 		<h:outputText value="#{mapBean.lat}"></h:outputText>
+		<br />
+		centerLong:
 		<h:outputText value="#{mapBean.lon}"></h:outputText>
+		
 
 	</h:form>
 
