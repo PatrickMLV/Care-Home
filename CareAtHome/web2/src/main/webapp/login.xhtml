@@ -22,12 +22,13 @@
 
     <h:body>
         <h2 class="center">Care@Home</h2>
+        <h:form>
 
         <p:panelGrid columns="2" styleClass="center">
             <f:facet name="header">
                 Login
             </f:facet>
-
+			
             <h:outputLabel for="login" value="Login:"/>
             <p:inputText id="login" value="" label="Login"/>
 
@@ -38,6 +39,7 @@
                 <p:commandButton type="button" value="Login" icon="ui-icon-check" style="margin:0"/>
             </f:facet>
         </p:panelGrid>
+        </h:form>
         <br/>
     </h:body>
 
