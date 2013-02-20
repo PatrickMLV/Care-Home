@@ -29,17 +29,17 @@ public class MapBean implements Serializable {
 	private MapModel simpleModel;
 
 	private Marker marker;
-	private String test = "Test d'affichage";
 	private double lat = 0;
 	private double lon = 0;
 	private double minLat = 9999;
 	private double minLon = 9999;
 	private double maxLat = 0;
-	private double maxLon = 0;	
+	private double maxLon = 0;
 	private double zoom = 13;
-	
-	public String getTest() {
-		return test;
+	private List<User> users = new ArrayList<User>();
+
+	public List<User> getUsers() {
+		return users;
 	}
 
 	public double getLat() {
@@ -53,22 +53,23 @@ public class MapBean implements Serializable {
 	public double getZoom() {
 		return zoom;
 	}
-	
+
 	public MapBean() {
-		simpleModel = new DefaultMapModel();
-		String[] AdressList = {
-				"Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne",
-				"Aérodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
-				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee" };
+		users.add(new User("Fac", "MLV", "Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne", "0606060606"));
+		users.add(new User("Aerodrome", "Lognes", "Aérodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes", "0707070707"));
+		users.add(new User("Ecole", "Esiee", "2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee", "0808080808"));
 		
+		simpleModel = new DefaultMapModel();
+
 		final Geocoder geocoder = new Geocoder();
 		GeocoderRequest geocoderRequest = null;
 		GeocodeResponse geocodeResponse = null;
 		List<GeocoderResult> results = new ArrayList<GeocoderResult>();
 		LatLng coord = null;
-		
-		for (String string : AdressList) {
-			geocoderRequest = new GeocoderRequestBuilder().setAddress(string).setLanguage("fr").getGeocoderRequest();
+
+		for(User user : users){
+			geocoderRequest = new GeocoderRequestBuilder().setAddress(user.getAdress())
+					.setLanguage("fr").getGeocoderRequest();
 			geocodeResponse = geocoder.geocode(geocoderRequest);
 			results = geocodeResponse.getResults();
 			for (GeocoderResult geocoderResult : results) {
@@ -76,31 +77,31 @@ public class MapBean implements Serializable {
 						.doubleValue();
 				lon = geocoderResult.getGeometry().getLocation().getLng()
 						.doubleValue();
-				
-				if(lat < minLat){
+
+				if (lat < minLat) {
 					minLat = lat;
 				}
-				if(lat > maxLat){
+				if (lat > maxLat) {
 					maxLat = lat;
 				}
-				if(lon < minLon){
+				if (lon < minLon) {
 					minLon = lon;
 				}
-				if(lon > maxLon){
+				if (lon > maxLon) {
 					maxLon = lon;
 				}
 				coord = new LatLng(lat, lon);
-				
-				simpleModel.addOverlay(new Marker(coord, string));
-		 	}
+
+				simpleModel.addOverlay(new Marker(coord, user.getAdress()));
+			}
 		}
 		
-		
+
 		/**
 		 * Calcul du centrage de la map pour voir tous les points
 		 */
-		lat = (minLat + maxLat)/2;
-		lon = (minLon + maxLon)/2;
+		lat = (minLat + maxLat) / 2;
+		lon = (minLon + maxLon) / 2;
 
 	}
 
