@@ -8,38 +8,48 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>GoogleMap test</title>
+	<title>Tournée | Care@Home</title>
 	<script src="http://maps.google.com/maps/api/js?sensor=false"
 		type="text/javascript"></script>
+	<style type="text/css">
+body {
+	background-color: #d2caec;
+}
+
+.center {
+	text-align: center;
+}
+
+#centerMap {
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+}
+
+#mapDiag {
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 150px;
+}
+
+#sep {
+	text-align:center;
+}
+</style>
 </h:head>
 
 <h:body>
+	<h2 class="center">Care@Home</h2>
 
 	<h:form>
-
-		<p:growl id="growl" showDetail="true" />
-
-		<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
-			type="HYBRID" model="#{mapBean.simpleModel}"
-			style="width:600px;height:400px">
-			<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-				update="growl" />
-
-		</p:gmap>
-		<br />
-		centerLat : 
-		<h:outputText value="#{mapBean.lat}"></h:outputText>
-		<br />
-		centerLong:
-		<h:outputText value="#{mapBean.lon}"></h:outputText>
-		<br />
-		<br />
-		<br />
-
-		<p:commandButton type="button" icon="ui-icon-pin-s" value="Show Map"
-			onclick="dlg.show()" />
+		<div id="mapDiag">
+			<p:commandButton type="button" icon="ui-icon-pin-s" value="GoogleMap"
+				onclick="dlg.show()" style="width:150px;" />
+		</div>
 
 		<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
+			<p:growl id="growl" showDetail="true" />
 
 			<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
 				type="HYBRID" model="#{mapBean.simpleModel}"
@@ -50,8 +60,6 @@
 		</p:dialog>
 
 		<br />
-		<br />
-
 
 		<h:form>
 
@@ -76,7 +84,21 @@
 
 		</h:form>
 		<br />
+		<br />
+		<div id="sep">
+			__________________________________________________</div>
+		<br />
+		<br />
 
+		<div id="centerMap">
+			<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
+				type="HYBRID" model="#{mapBean.simpleModel}"
+				style="width:600px;height:400px">
+				<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+					update="growl" />
+
+			</p:gmap>
+		</div>
 
 
 	</h:form>

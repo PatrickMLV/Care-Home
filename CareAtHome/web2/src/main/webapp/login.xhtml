@@ -2,45 +2,66 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-    <style type="text/css">
-        body {
-            background-color: #d2caec;
-        }
+	<style type="text/css">
+body {
+	background-color: #d2caec;
+}
 
-        .center {
-            text-align: center;
-        }
-    </style>
+.center {
+	text-align: center;
+}
 
-    <h:head>
-    </h:head>
+#loginForm {
+	margin-top: 100px; 
+	margin-left : auto;
+	margin-right: auto;
+	width: 350px;
+	margin-left: auto;
+}
 
-    <h:body>
-        <h2 class="center">Care@Home</h2>
-        <h:form>
+#commandButtonLogin {
+	margin-left: auto;
+	margin-right: auto;
+	width: 110px;
+}
+</style>
 
-        <p:panelGrid columns="2" styleClass="center">
-            <f:facet name="header">
-                Login
-            </f:facet>
-			
-            <h:outputLabel for="login" value="Login:"/>
-            <p:inputText id="login" value="" label="Login"/>
+	<h:head>
+		<title>Connexion | Care@Home</title>
+	</h:head>
 
-            <h:outputLabel for="password" value="Password:"/>
-            <p:inputText id="password" value="" label="Password"/>
+	<h:body>
+		<h2 class="center">Care@Home</h2>
 
-            <f:facet name="footer">
-                <p:commandButton type="button" value="Login" icon="ui-icon-check" style="margin:0"/>
-            </f:facet>
-        </p:panelGrid>
-        </h:form>
-        <br/>
-    </h:body>
+		<div id="loginForm">
+			<f:view>
+				<h:form>
+					<p:panelGrid columns="2" styleClass="center" style="width:350px;">
+						<f:facet name="header">
+               				 Login
+            			</f:facet>
+						<h:outputLabel for="login" value="Login:" />
+						<p:inputText id="login" value="" label="Login" />
+
+						<h:outputLabel for="password" value="Password:" />
+						<p:inputText id="password" value="" label="Password" />
+
+						<f:facet name="footer">
+							<div id="commandButtonLogin">
+								<p:commandButton type="button" value="Login"
+									icon="ui-icon-check" style="width:110px;" />
+							</div>
+						</f:facet>
+					</p:panelGrid>
+				</h:form>
+			</f:view>
+		</div>
+		<br />
+	</h:body>
 
 </ui:composition>
