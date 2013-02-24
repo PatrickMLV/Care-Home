@@ -46,15 +46,15 @@ body {
                				 Login
             			</f:facet>
 						<h:outputLabel for="login" value="Login:" />
-						<p:inputText id="login" value="" label="Login" />
+						<p:inputText id="login" value="#{loginBean.login}" label="Login" />
 
 						<h:outputLabel for="password" value="Password:" />
-						<p:inputText id="password" value="" label="Password" />
+						<h:inputSecret id="password" value="#{loginBean.password}" label="Password" />
 
 						<f:facet name="footer">
 							<div id="commandButtonLogin">
-								<p:commandButton type="button" value="Login"
-									icon="ui-icon-check" style="width:110px;" />
+								<h:commandButton value="Connexion" action="#{loginBean.authentificate}"
+									style="width:150px;"/>
 							</div>
 						</f:facet>
 					</p:panelGrid>

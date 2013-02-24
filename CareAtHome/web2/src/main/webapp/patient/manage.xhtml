@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="/basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="/basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<!-- BUTTON -->
+				<p:commandButton update=":modalAddPatient" action="#{evaluationBean.newPatient}" 
+				value="Add Patient" onclick="dlg1.show();" type="button" />
+					
+					
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+	
+	<!-- MODAL -->
+	<p:dialog id="modalAddPatient" header="Add Patient"
+		widgetVar="dlg1" modal="true" height="400" width="600">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{patientBean.patient.firstName}"/>
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{patientBean.patient.lastName}"/>
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{patientBean.patient.birthday}"/>
+				<h:outputText value="Ssid :" />
+				<p:inputText value="#{patientBean.patient.ssid}"/>
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{patientBean.patient.phone}"/>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Save"
+					action="#{patientBean.savePatient}"
+					onclick="dlg1.hide();" type="button" icon="ui-icon-check" />
+				<p:commandButton value="Cancel" onclick="dlg1.hide();" type="button"
+					icon="ui-icon-close" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>
