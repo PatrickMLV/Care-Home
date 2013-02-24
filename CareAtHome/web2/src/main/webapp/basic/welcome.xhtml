@@ -16,15 +16,15 @@
 <h:body>
 	<p:layout fullPage="true">
 		<!-- BANNER -->
-		<p:layoutUnit position="north" id="menu">
+		<p:layoutUnit styleClass="include" position="north" id="menu">
 			<ui:include src="banner.xhtml" />
 		</p:layoutUnit>
 		<!-- MENU -->
-		<p:layoutUnit position="west">
+		<p:layoutUnit styleClass="include" position="west">
 			<ui:include src="menu.xhtml" />
 		</p:layoutUnit>
 		<!-- CONTENT -->
-		<p:layoutUnit position="center">
+		<p:layoutUnit styleClass="include" position="center">
 			WELCOME
 			<h:outputText value="#{loginBean.login}" />
 		</p:layoutUnit>
