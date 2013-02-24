@@ -60,7 +60,7 @@ public class MapBean implements Serializable {
 		users.add(new User(
 				"Aerodrome",
 				"Lognes",
-				"Aérodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
+				"Aerodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
 				"0707070707"));
 		users.add(new User("Ecole", "Esiee",
 				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee",
@@ -117,7 +117,7 @@ public class MapBean implements Serializable {
 	public void zoomDefinition(double minLat, double minLon, double maxLat,
 			double maxLon, int marquerNumber) {
 		/**
-		 * Si on a qu'un marqueur on met par défaut le zoom a 13
+		 * Si on a qu'un marqueur on met par defaut le zoom a 13
 		 */
 		if (marquerNumber == 1 || ((minLat == maxLat) && (minLat == maxLat))) {
 			zoom = 13;
