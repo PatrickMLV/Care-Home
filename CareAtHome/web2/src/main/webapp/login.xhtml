@@ -2,66 +2,66 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
-	<style type="text/css">
-body {
-	background-color: #d2caec;
-}
+    <style type="text/css">
+        body {
+            background-color: #d2caec;
+        }
 
-.center {
-	text-align: center;
-}
+        .center {
+            text-align: center;
+        }
 
-#loginForm {
-	margin-top: 100px; 
-	margin-left : auto;
-	margin-right: auto;
-	width: 350px;
-	margin-left: auto;
-}
+        #loginForm {
+            margin-top: 100px;
+            margin-left : auto;
+            margin-right: auto;
+            width: 350px;
+            margin-left: auto;
+        }
 
-#commandButtonLogin {
-	margin-left: auto;
-	margin-right: auto;
-	width: 110px;
-}
-</style>
+        #commandButtonLogin {
+            margin-left: auto;
+            margin-right: auto;
+            width: 110px;
+        }
+    </style>
 
-	<h:head>
-		<title>Connexion | Care@Home</title>
-	</h:head>
+    <h:head>
+        <title>Connexion | Care@Home</title>
+    </h:head>
 
-	<h:body>
-		<h2 class="center">Care@Home</h2>
+    <h:body>
+        <h2 class="center">Care@Home</h2>
 
-		<div id="loginForm">
-			<f:view>
-				<h:form>
-					<p:panelGrid columns="2" styleClass="center" style="width:350px;">
-						<f:facet name="header">
-               				 Login
-            			</f:facet>
-						<h:outputLabel for="login" value="Login:" />
-						<p:inputText id="login" value="#{loginBean.login}" label="Login" />
+        <div id="loginForm">
+            <f:view>
+                <h:form>
+                    <p:panelGrid columns="2" styleClass="center" style="width:350px;">
+                        <f:facet name="header">
+                            Login
+                        </f:facet>
+                        <h:outputLabel for="login" value="Login:" />
+                        <p:inputText id="login" value="#{loginBean.login}" label="Login" />
 
-						<h:outputLabel for="password" value="Password:" />
-						<h:inputSecret id="password" value="#{loginBean.password}" label="Password" />
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{loginBean.password}" label="Password" />
 
-						<f:facet name="footer">
-							<div id="commandButtonLogin">
-								<h:commandButton value="Connexion" action="#{loginBean.authentificate}"
-									style="width:150px;"/>
-							</div>
-						</f:facet>
-					</p:panelGrid>
-				</h:form>
-			</f:view>
-		</div>
-		<br />
-	</h:body>
+                        <f:facet name="footer">
+                            <div id="commandButtonLogin">
+                                <h:commandButton value="Connexion" action="#{loginBean.authentificate}"
+                                                 style="width:150px;"/>
+                            </div>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </f:view>
+        </div>
+        <br />
+    </h:body>
 
 </ui:composition>
