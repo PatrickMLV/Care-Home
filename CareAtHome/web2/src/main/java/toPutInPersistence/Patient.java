@@ -11,6 +11,19 @@ public class Patient {
 	private String address;
 	private String phone;
 	
+	
+	
+	public Patient(String firstName, String lastName, Date birthday,
+			String ssid, String address, String phone) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+		this.ssid = ssid;
+		this.address = address;
+		this.phone = phone;
+	}
+	public Patient() {
+	}
 	public String getFirstName() {
 		return firstName;
 	}

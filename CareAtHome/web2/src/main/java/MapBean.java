@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -12,6 +13,8 @@ import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
+
+import toPutInPersistence.Patient;
 
 import com.google.code.geocoder.Geocoder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
@@ -54,15 +57,17 @@ public class MapBean implements Serializable {
 	}
 
 	public MapBean() {
-		users.add(new Patient("Fac", "MLV",
+		users.add(new Patient("Fac", "MLV", new Date(), "alalala",
 				"Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne",
 				"0606060606"));
 		users.add(new Patient(
 				"Aerodrome",
 				"Lognes",
+				new Date(),
+				"alalala",
 				"Aerodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
 				"0707070707"));
-		users.add(new Patient("Ecole", "Esiee",
+		users.add(new Patient("Ecole", "Esiee", new Date(), "alalala",
 				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee",
 				"0808080808"));
 
@@ -76,7 +81,7 @@ public class MapBean implements Serializable {
 
 		for (Patient user : users) {
 			geocoderRequest = new GeocoderRequestBuilder()
-					.setAddress(user.getAdress()).setLanguage("fr")
+					.setAddress(user.getAddress()).setLanguage("fr")
 					.getGeocoderRequest();
 			geocodeResponse = geocoder.geocode(geocoderRequest);
 			results = geocodeResponse.getResults();
@@ -100,7 +105,7 @@ public class MapBean implements Serializable {
 				}
 				coord = new LatLng(lat, lon);
 
-				simpleModel.addOverlay(new Marker(coord, user.getAdress()));
+				simpleModel.addOverlay(new Marker(coord, user.getAddress()));
 			}
 		}
 
@@ -123,7 +128,7 @@ public class MapBean implements Serializable {
 			zoom = 13;
 		} else {
 
-			int mapdisplay = 322; 
+			int mapdisplay = 322;
 			double dist = (6371 * Math
 					.acos(Math.sin(minLat / 57.2958)
 							* Math.sin(maxLat / 57.2958)

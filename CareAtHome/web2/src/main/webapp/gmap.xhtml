@@ -68,17 +68,17 @@ body {
          		   Liste des adresses 
        			 </f:facet>
 
-				<p:column sortBy="#{user.name}" headerText="Nom">
-					<h:outputText value="#{user.name}" />
+				<p:column sortBy="#{user.firstName}" headerText="Nom">
+					<h:outputText value="#{user.firstName}" />
 				</p:column>
-				<p:column sortBy="#{user.surname}" headerText="Prénom">
-					<h:outputText value="#{user.surname}" />
+				<p:column sortBy="#{user.lastName}" headerText="Prénom">
+					<h:outputText value="#{user.lastName}" />
 				</p:column>
-				<p:column sortBy="#{user.adress}" headerText="Adresse">
-					<h:outputText value="#{user.adress}" />
+				<p:column sortBy="#{user.address}" headerText="Adresse">
+					<h:outputText value="#{user.address}" />
 				</p:column>
-				<p:column sortBy="#{user.phoneNumber}" headerText="Tel">
-					<h:outputText value="#{user.phoneNumber}" />
+				<p:column sortBy="#{user.phone}" headerText="Tel">
+					<h:outputText value="#{user.phone}" />
 				</p:column>
 			</p:dataTable>
 
