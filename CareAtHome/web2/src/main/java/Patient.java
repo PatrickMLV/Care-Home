@@ -3,13 +3,13 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class User {
+public class Patient {
 	private String name;
 	private String surname;
 	private String adress;
 	private String phoneNumber;
 
-	public User(String name, String surname, String adresse, String phoneNumber) {
+	public Patient(String name, String surname, String adresse, String phoneNumber) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -17,7 +17,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public User() {
+	public Patient() {
 		// TODO Auto-generated constructor stub
 	}
 

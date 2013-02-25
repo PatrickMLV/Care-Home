@@ -35,9 +35,9 @@ public class MapBean implements Serializable {
 	private double maxLat = 0;
 	private double maxLon = 0;
 	private double zoom = 13;
-	private List<User> users = new ArrayList<User>();
+	private List<Patient> users = new ArrayList<Patient>();
 
-	public List<User> getUsers() {
+	public List<Patient> getUsers() {
 		return users;
 	}
 
@@ -54,15 +54,15 @@ public class MapBean implements Serializable {
 	}
 
 	public MapBean() {
-		users.add(new User("Fac", "MLV",
+		users.add(new Patient("Fac", "MLV",
 				"Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne",
 				"0606060606"));
-		users.add(new User(
+		users.add(new Patient(
 				"Aerodrome",
 				"Lognes",
 				"Aerodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
 				"0707070707"));
-		users.add(new User("Ecole", "Esiee",
+		users.add(new Patient("Ecole", "Esiee",
 				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee",
 				"0808080808"));
 
@@ -74,7 +74,7 @@ public class MapBean implements Serializable {
 		List<GeocoderResult> results = new ArrayList<GeocoderResult>();
 		LatLng coord = null;
 
-		for (User user : users) {
+		for (Patient user : users) {
 			geocoderRequest = new GeocoderRequestBuilder()
 					.setAddress(user.getAdress()).setLanguage("fr")
 					.getGeocoderRequest();
