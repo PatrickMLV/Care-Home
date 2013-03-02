@@ -59,6 +59,7 @@ body {
 
 				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
 					<p:growl id="growl" showDetail="true" />
+					
 
 					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
 						zoom="#{mapBean.zoom}" type="HYBRID"
@@ -115,8 +116,18 @@ body {
 	</p:layout>
 
 
+<!--FIXME sans le bloc en dessous on ne peux plus ouvrir la map...
+!-->
+				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
+					<p:growl id="growl" showDetail="true" />
 
-
+					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
+						zoom="#{mapBean.zoom}" type="HYBRID"
+						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
+						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+							update="growl" />
+					</p:gmap>
+				</p:dialog>
 </h:body>
 </html>
 
