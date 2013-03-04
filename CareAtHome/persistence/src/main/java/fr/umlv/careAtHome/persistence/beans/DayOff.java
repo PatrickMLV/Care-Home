@@ -18,26 +18,26 @@ public class DayOff {
 	private int uuid;
 
 	@Column(name = "FIRSTNAME")
-	private String actorUuid;
+	private int actorUuid;
 
 	@Column(name = "BEGINDATE")
 	private Date beginDate;
 
 	@Column(name = "ENDDATE")
-	private Date endDAte;
+	private Date endDate;
 
 	public DayOff() {
 	}
 
-	public DayOff(int uuid, String actorUuid, Date beginDate, Date endDAte) {
+	public DayOff(int uuid, int actorUuid, Date beginDate, Date endDate) {
 		super();
 		this.uuid = uuid;
 		this.actorUuid = actorUuid;
 		this.beginDate = beginDate;
-		this.endDAte = endDAte;
+		this.endDate = endDate;
 	}
 
-	public String getActorUuid() {
+	public int getActorUuid() {
 		return actorUuid;
 	}
 
@@ -46,14 +46,14 @@ public class DayOff {
 	}
 
 	public Date getEndDAte() {
-		return endDAte;
+		return endDate;
 	}
 
 	public int getUuid() {
 		return uuid;
 	}
 
-	public void setActorUuid(String actorUuid) {
+	public void setActorUuid(int actorUuid) {
 		this.actorUuid = actorUuid;
 	}
 
@@ -62,7 +62,7 @@ public class DayOff {
 	}
 
 	public void setEndDAte(Date endDAte) {
-		this.endDAte = endDAte;
+		this.endDate = endDAte;
 	}
 
 	public void setUuid(int uuid) {

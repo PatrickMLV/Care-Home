@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Personnel {
+public class Personnel extends Actor {
 
 	@Id
 	@GeneratedValue

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Responsable {
+public class Responsable extends Actor {
 
 	@Id
 	@GeneratedValue

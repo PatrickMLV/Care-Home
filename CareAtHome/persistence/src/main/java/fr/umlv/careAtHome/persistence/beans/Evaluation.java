@@ -18,7 +18,7 @@ public class Evaluation {
 	private int uuid;
 	
 	@Column(name = "UUID_EVALUATOR")
-	private int uuidEvalusator;
+	private int uuidEvaluator;
 	
 	@Column(name = "UUID_ACTOR")
 	private int uuidActor;
@@ -32,11 +32,11 @@ public class Evaluation {
 	public Evaluation() {
 	}
 
-	public Evaluation(int uuid, int uuidEvalusator, int uuidActor,
+	public Evaluation(int uuid, int uuidEvaluator, int uuidActor,
 			String evaluation, Date date) {
 		super();
 		this.uuid = uuid;
-		this.uuidEvalusator = uuidEvalusator;
+		this.uuidEvaluator = uuidEvaluator;
 		this.uuidActor = uuidActor;
 		this.evaluation = evaluation;
 		this.date = date;
@@ -50,12 +50,12 @@ public class Evaluation {
 		this.uuid = uuid;
 	}
 
-	public int getUuidEvalusator() {
-		return uuidEvalusator;
+	public int getUuidEvaluator() {
+		return uuidEvaluator;
 	}
 
-	public void setUuidEvalusator(int uuidEvalusator) {
-		this.uuidEvalusator = uuidEvalusator;
+	public void setUuidEvaluator(int uuidEvaluator) {
+		this.uuidEvaluator = uuidEvaluator;
 	}
 
 	public int getUuidActor() {
