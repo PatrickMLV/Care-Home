@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence;
+package fr.umlv.careAtHome.persistence.beans;
 
 import java.util.Date;
 
@@ -10,75 +10,88 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Patient {
+public class Personnel {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "UUID")
-    private int uuid;
+	@Id
+	@GeneratedValue
+	@Column(name = "UUID")
+	private int uuid;
 
-    @Column(name = "FIRSTNAME")
+	@Column(name = "FIRSTNAME")
 	private String firstName;
 
-    @Column(name = "LASTNAME")
-    private String lastName;
+	@Column(name = "LASTNAME")
+	private String lastName;
 
-    @Column(name = "BIRTHDAY")
-    private Date birthday;
+	@Column(name = "BIRTHDAY")
+	private Date birthday;
 
-    @Column(name = "SSID")
-    private String ssid;
+	@Column(name = "SSID")
+	private String ssid;
 
-    @Column(name = "ADDRESS")
-    private String address;
+	@Column(name = "PHONE")
+	private String phone;
 
-    @Column(name = "PHONE")
-    private String phone;
-	
-	public Patient(String firstName, String lastName, Date birthday,
-                   String ssid, String address, String phone) {
+	@Column(name = "REFERANT")
+	private String referant;
+
+	public Personnel(String firstName, String lastName, Date birthday,
+			String ssid, String phone, String referant) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthday = birthday;
 		this.ssid = ssid;
-		this.address = address;
+		this.referant = referant;
 		this.phone = phone;
 	}
-	public Patient() {
+
+	public Personnel() {
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public Date getBirthday() {
 		return birthday;
 	}
+
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+
 	public String getSsid() {
 		return ssid;
 	}
+
 	public void setSsid(String ssid) {
 		this.ssid = ssid;
 	}
-	public String getAddress() {
-		return address;
+
+	public String getReferant() {
+		return referant;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setReferant(String referant) {
+		this.referant = referant;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}

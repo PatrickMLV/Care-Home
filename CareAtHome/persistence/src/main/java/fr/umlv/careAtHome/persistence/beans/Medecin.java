@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence;
+package fr.umlv.careAtHome.persistence.beans;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Responsable {
+public class Medecin {
 
 	@Id
 	@GeneratedValue
@@ -32,20 +32,20 @@ public class Responsable {
 	@Column(name = "PHONE")
 	private String phone;
 
-	@Column(name = "REFERANT")
-	private String referant;
+	@Column(name = "ADRESS")
+	private String adress;
 
-	public Responsable(String firstName, String lastName, Date birthday,
-			String ssid, String phone, String referant) {
+	public Medecin(String firstName, String lastName, Date birthday,
+			String ssid, String phone, String adress) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthday = birthday;
 		this.ssid = ssid;
-		this.referant = referant;
+		this.adress = adress;
 		this.phone = phone;
 	}
 
-	public Responsable() {
+	public Medecin() {
 	}
 
 	public String getFirstName() {
@@ -80,12 +80,12 @@ public class Responsable {
 		this.ssid = ssid;
 	}
 
-	public String getReferant() {
-		return referant;
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setReferant(String referant) {
-		this.referant = referant;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
 	public String getPhone() {

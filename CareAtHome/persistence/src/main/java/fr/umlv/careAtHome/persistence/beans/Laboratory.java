@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence;
+package fr.umlv.careAtHome.persistence.beans;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Pharmacie {
+public class Laboratory {
 
 	@Id
 	@GeneratedValue
@@ -26,10 +26,10 @@ public class Pharmacie {
 	@Column(name = "ADRESS")
 	private String adress;
 
-	public Pharmacie() {
+	public Laboratory() {
 	}
 
-	public Pharmacie(int uuid, String name, String phone, String adress) {
+	public Laboratory(int uuid, String name, String phone, String adress) {
 		super();
 		this.uuid = uuid;
 		this.name = name;

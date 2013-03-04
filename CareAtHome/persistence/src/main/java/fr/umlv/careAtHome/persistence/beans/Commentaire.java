@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence;
+package fr.umlv.careAtHome.persistence.beans;
 
 import java.util.Date;
 
@@ -10,34 +10,35 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class RDV {
+public class Commentaire {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "UUID")
 	private int uuid;
-	
+
 	@Column(name = "UUID_PERSONNEL")
 	private int uuidPersonnel;
-	
+
 	@Column(name = "UUID_PATIENT")
 	private int uuidPatient;
 
-	@Column(name = "PRIORITY")
-	private int priotiry;
+	@Column(name = "REMARQUE")
+	private String remarque;
 
 	@Column(name = "DATE")
 	private Date date;
 
-	public RDV() {
+	public Commentaire() {
 	}
 
-	public RDV(int uuid, int uuidPersonnel, int uuidPatient, int priotiry, Date date) {
+	public Commentaire(int uuid, int uuidPersonnel, int uuidPatient,
+			String remarque, Date date) {
 		super();
 		this.uuid = uuid;
 		this.uuidPersonnel = uuidPersonnel;
 		this.uuidPatient = uuidPatient;
-		this.priotiry = priotiry;
+		this.remarque = remarque;
 		this.date = date;
 	}
 
@@ -45,9 +46,8 @@ public class RDV {
 		return date;
 	}
 
-
-	public int getPriotiry() {
-		return priotiry;
+	public String getRemarque() {
+		return remarque;
 	}
 
 	public int getUuid() {
@@ -57,6 +57,7 @@ public class RDV {
 	public int getUuidPatient() {
 		return uuidPatient;
 	}
+
 	public int getUuidPersonnel() {
 		return uuidPersonnel;
 	}
@@ -69,8 +70,8 @@ public class RDV {
 		this.uuid = uuid;
 	}
 
-	public void setPriotiry(int priotiry) {
-		this.priotiry = priotiry;
+	public void setRemarque(String remarque) {
+		this.remarque = remarque;
 	}
 
 	public void setUuidPatient(int uuidPatient) {
