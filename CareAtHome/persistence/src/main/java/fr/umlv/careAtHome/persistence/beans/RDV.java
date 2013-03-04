@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name="RDV")
 public class RDV {
 
 	@Id
@@ -24,7 +24,7 @@ public class RDV {
 	private int uuidPatient;
 
 	@Column(name = "PRIORITY")
-	private int priotiry;
+	private String priotiry;
 
 	@Column(name = "DATE")
 	private Date date;
@@ -32,7 +32,7 @@ public class RDV {
 	public RDV() {
 	}
 
-	public RDV(int uuid, int uuidPersonnel, int uuidPatient, int priotiry, Date date) {
+	public RDV(int uuid, int uuidPersonnel, int uuidPatient, String priotiry, Date date) {
 		super();
 		this.uuid = uuid;
 		this.uuidPersonnel = uuidPersonnel;
@@ -46,7 +46,7 @@ public class RDV {
 	}
 
 
-	public int getPriotiry() {
+	public String getPriotiry() {
 		return priotiry;
 	}
 
@@ -69,7 +69,7 @@ public class RDV {
 		this.uuid = uuid;
 	}
 
-	public void setPriotiry(int priotiry) {
+	public void setPriotiry(String priotiry) {
 		this.priotiry = priotiry;
 	}
 

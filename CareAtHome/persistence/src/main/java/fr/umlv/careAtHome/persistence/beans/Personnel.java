@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name="PERSONNEL")
 public class Personnel extends Actor {
 
 	@Id

@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import fr.umlv.careAtHome.persistence.dao.IActorDAO;
-
 @Entity
-@Table
+@Table (name="CADRE")
 public class Cadre extends Actor  {
 
 	@Id
