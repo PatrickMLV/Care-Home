@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style type="text/css">
+        body {
+            background-color: #d2caec;
+        }
+    </style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" />
+		<p:menu>
+			<p:submenu label="Patient">
+            	<p:menuitem value="Consult" action="goToConsultPatient" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            </p:submenu>
+            <p:submenu label="Staff">
+            	<p:menuitem value="Consult" action="goToConsultStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            	<p:menuitem value="Circuit" action="goToCircuitStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            	<p:menuitem value="Day Off" action="goToDayOffStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            </p:submenu>
+            <p:submenu label="Admin">
+            	<p:menuitem value="Manage Patient" action="goToManagePatient" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            	<p:menuitem value="Manage Staff" action="goToManageStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            	<p:menuitem value="Evaluation" action="goToEvaluation" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
+            </p:submenu>
+		</p:menu>
+	</h:form>
+</h:body>
+</html>

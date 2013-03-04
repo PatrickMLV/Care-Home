@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+body {
+	background-color: #d2caec;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit styleClass="include" position="north" id="menu">
+			<ui:include src="banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit styleClass="include" position="west">
+			<ui:include src="menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<h:panelGrid rendered="#{flowScope.window == '0'}" width="100%">
+					<ui:include src="welcome.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '1'}" width="100%">
+					<ui:include src="../patient/consultPatient.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '2'}" width="100%">
+					<ui:include src="../staff/consultStaff.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '3'}" width="100%">
+					<ui:include src="../staff/circuit.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '4'}" width="100%">
+					<ui:include src="../staff/dayoff.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '5'}" width="100%">
+					<ui:include src="../admin/managePatient.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '6'}" width="100%">
+					<ui:include src="../admin/manageStaff.xhtml" />
+				</h:panelGrid>
+				<h:panelGrid rendered="#{flowScope.window == '7'}" width="100%">
+					<ui:include src="../admin/evaluation.xhtml" />
+				</h:panelGrid>
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+
+	<!-- MODALS -->
+	<!-- Add Patient Modal -->
+	<p:dialog id="modalAddPatient" header="Add Patient"
+		widgetVar="dlgAddPatient" modal="true" height="400" width="600">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{patientBean.patient.firstName}" />
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{patientBean.patient.lastName}" />
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{patientBean.patient.birthday}" />
+				<h:outputText value="Ssid :" />
+				<p:inputText value="#{patientBean.patient.ssid}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{patientBean.patient.phone}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Save" action="#{patientBean.savePatient}"
+					onclick="dlgAddPatient.hide();" type="button" icon="ui-icon-check" />
+				<p:commandButton value="Cancel" onclick="dlgAddPatient.hide();" type="button"
+					icon="ui-icon-close" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Add Dayoff Modal -->
+	<p:dialog id="modalAddDayOff" header="Add Day Off"
+		widgetVar="dlgAddDayOff" modal="true" height="130" width="400">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="From :" />
+				<p:inputText value="#{dayoffBean.dayOff.from}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="Nb days :" />
+				<p:inputText value="#{dayoffBean.dayOff.nbDays}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Save" action="#{dayoff.saveDayOff}"
+					onclick="dlgAddDayOff.hide();" type="button" icon="ui-icon-check" />
+				<p:commandButton value="Cancel" onclick="dlgAddDayOff.hide();" type="button"
+					icon="ui-icon-close" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Google Map Modal -->
+	<!--FIXME sans le bloc en dessous on ne peux plus ouvrir la map...
+!-->
+	<p:dialog widgetVar="dlgGoogleMap" width="625" height="400"
+		modal="true">
+		<p:growl id="growl" showDetail="true" />
+
+		<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
+			type="HYBRID" model="#{mapBean.simpleModel}"
+			style="width:600px;height:400px">
+			<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+				update="growl" />
+		</p:gmap>
+	</p:dialog>
+
+</h:body>
+</html>

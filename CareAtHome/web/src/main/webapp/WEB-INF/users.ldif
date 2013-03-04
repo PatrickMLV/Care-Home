@@ -1,0 +1,25 @@
+dn: ou=Groups,dc=ssid,dc=fr
+objectclass: top
+objectclass: organizationalUnit
+ou: Groups
+
+dn: ou=Users,dc=ssid,dc=fr
+objectclass: top
+objectclass: organizationalUnit
+ou: Users
+
+dn: uid=toto,ou=Users,dc=ssid,dc=fr
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: toto
+sn: toto
+uid: toto
+userPassword: toto
+
+dn: cn=group1,ou=Groups,dc=ssid,dc=fr
+objectclass: top
+objectclass: groupOfNames
+cn: group1
+member: uid=toto,ou=Users,dc=ssid,dc=fr
