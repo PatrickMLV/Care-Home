@@ -40,69 +40,94 @@ body {
 </h:head>
 
 <h:body>
-	<h:form>
-		<div id="mapDiag">
-			<!-- Modal in basic/main.xhtml -->
-			<p:commandButton type="button" icon="ui-icon-pin-s" value="GoogleMap"
-				onclick="dlgGoogleMap.show()" style="width:150px;" />
-		</div>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit styleClass="include" position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit styleClass="include" position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<p:layoutUnit styleClass="include" position="center">
+			<h:form>
+				<div id="mapDiag">
+					<p:commandButton type="button" icon="ui-icon-pin-s"
+						value="GoogleMap" onclick="dlg.show()" style="width:150px;" />
+				</div>
 
-		<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
-			<p:growl id="growl" showDetail="true" />
+				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
+					<p:growl id="growl" showDetail="true" />
+					
 
+					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
+						zoom="#{mapBean.zoom}" type="HYBRID"
+						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
+						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+							update="growl" />
+					</p:gmap>
+				</p:dialog>
 
-			<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
-				type="HYBRID" model="#{mapBean.simpleModel}"
-				style="width:600px;height:400px">
-				<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-					update="growl" />
-			</p:gmap>
-		</p:dialog>
+				<br />
 
-		<br />
+				<h:form>
 
-		<h:form>
-
-			<p:dataTable id="dataTable" var="user" value="#{mapBean.users}">
-				<f:facet name="header">  
+					<p:dataTable id="dataTable" var="user" value="#{mapBean.users}">
+						<f:facet name="header">  
          		   Liste des adresses 
        			 </f:facet>
 
-				<p:column sortBy="#{user.firstName}" headerText="Nom">
-					<h:outputText value="#{user.firstName}" />
-				</p:column>
-				<p:column sortBy="#{user.lastName}" headerText="Prénom">
-					<h:outputText value="#{user.lastName}" />
-				</p:column>
-				<p:column sortBy="#{user.address}" headerText="Adresse">
-					<h:outputText value="#{user.address}" />
-				</p:column>
-				<p:column sortBy="#{user.phone}" headerText="Tel">
-					<h:outputText value="#{user.phone}" />
-				</p:column>
-			</p:dataTable>
+						<p:column sortBy="#{user.firstName}" headerText="Nom">
+							<h:outputText value="#{user.firstName}" />
+						</p:column>
+						<p:column sortBy="#{user.lastName}" headerText="Prénom">
+							<h:outputText value="#{user.lastName}" />
+						</p:column>
+						<p:column sortBy="#{user.address}" headerText="Adresse">
+							<h:outputText value="#{user.address}" />
+						</p:column>
+						<p:column sortBy="#{user.phone}" headerText="Tel">
+							<h:outputText value="#{user.phone}" />
+						</p:column>
+					</p:dataTable>
 
-		</h:form>
-		<br />
-		<br />
-		<div id="sep">
-			__________________________________________________</div>
-		<br />
-		<br />
+				</h:form>
+				<br />
+				<br />
+				<div id="sep">
+					__________________________________________________</div>
+				<br />
+				<br />
 
-		<div id="centerMap">
-			<p:gmap center="#{mapBean.lat},#{mapBean.lon}" zoom="#{mapBean.zoom}"
-				type="HYBRID" model="#{mapBean.simpleModel}"
-				style="width:600px;height:400px">
-				<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-					update="growl" />
+				<div id="centerMap">
+					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
+						zoom="#{mapBean.zoom}" type="HYBRID"
+						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
+						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+							update="growl" />
 
-			</p:gmap>
-		</div>
-
-	</h:form>
+					</p:gmap>
+				</div>
 
 
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+
+
+<!--FIXME sans le bloc en dessous on ne peux plus ouvrir la map...
+!-->
+				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
+					<p:growl id="growl" showDetail="true" />
+
+					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
+						zoom="#{mapBean.zoom}" type="HYBRID"
+						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
+						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+							update="growl" />
+					</p:gmap>
+				</p:dialog>
 </h:body>
 </html>
 

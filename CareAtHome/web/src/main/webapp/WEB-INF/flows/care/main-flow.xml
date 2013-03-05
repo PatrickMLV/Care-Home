@@ -11,37 +11,107 @@
 
 	<action-state id="authentification">
 		<evaluate expression="loginBean.authentificate()" />
-		<transition on="success" to="main" >
+		<transition on="success" to="welcome" >
 			<evaluate expression="0" result="flowScope.window" />
 		</transition>
 		<transition on="error" to="login" />
 	</action-state>
 
-	<view-state id="main" view="basic/main.xhtml">
+	<view-state id="welcome" view="basic/welcome.xhtml">
 		<transition on="logout" to="login" />
-		
-		<!-- MENU -->
-		<transition on="goToConsultPatient" to="main" >
-			<evaluate expression="1" result="flowScope.window" />
-		</transition>
-		<transition on="goToConsultStaff" to="main" >
-			<evaluate expression="2" result="flowScope.window" />
-		</transition>
-		<transition on="goToCircuitStaff" to="main" >
-			<evaluate expression="3" result="flowScope.window" />
-		</transition>
-		<transition on="goToDayOffStaff" to="main" >
-			<evaluate expression="4" result="flowScope.window" />
-		</transition>
-		<transition on="goToManagePatient" to="main" >
-			<evaluate expression="5" result="flowScope.window" />
-		</transition>
-		<transition on="goToManageStaff" to="main" >
-			<evaluate expression="6" result="flowScope.window" />
-		</transition>
-		<transition on="goToEvaluation" to="main" >
-			<evaluate expression="7" result="flowScope.window" />
-		</transition>
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="consultPatient" view="patient/consultPatient.xhtml">
+		<on-entry>
+			<evaluate expression="patientManagerBean.init()"></evaluate>
+		</on-entry>
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="consultStaff" view="staff/consultStaff.xhtml">
+		<on-entry>
+			<evaluate expression="staffManagerBean.init()"></evaluate>
+		</on-entry>
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="circuitStaff" view="staff/circuit.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="dayOffStaff" view="staff/dayoff.xhtml">
+		<on-entry>
+			<evaluate expression="dayOffManagerBean.init(loginBean.user.uuid)"></evaluate>
+		</on-entry>
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="managePatient" view="admin/managePatient.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="manageStaff" view="admin/manageStaff.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+	</view-state>
+	
+	<view-state id="evaluation" view="admin/evaluation.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
 
 </flow>

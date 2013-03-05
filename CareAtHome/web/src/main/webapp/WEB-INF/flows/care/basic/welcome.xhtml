@@ -8,15 +8,27 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<style type="text/css">
-body {
-	background-color: #d2caec;
-}
-</style>
+        body {
+            background-color: #d2caec;
+        }
+	</style>
 </h:head>
 <h:body>
-	<!-- CONTENT -->
-	WELCOME
-	<h:outputText value="#{loginBean.login}" />
-
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit styleClass="include" position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit styleClass="include" position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<p:layoutUnit styleClass="include" position="center">
+			WELCOME
+			<h:outputText value="#{loginBean.login}" />
+		</p:layoutUnit>
+	</p:layout>
+	
 </h:body>
 </html>

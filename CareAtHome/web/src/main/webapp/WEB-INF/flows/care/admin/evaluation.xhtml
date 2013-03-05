@@ -7,11 +7,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<style>
-</style>
+	<style type="text/css">
+        body {
+            background-color: #d2caec;
+        }
+	</style>
 </h:head>
 <h:body>
-	<!-- CONTENT -->
-	EVALUATION
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit styleClass="include" position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit styleClass="include" position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<p:layoutUnit styleClass="include" position="center">
+			EVALUATION
+		</p:layoutUnit>
+	</p:layout>
+	
 </h:body>
 </html>

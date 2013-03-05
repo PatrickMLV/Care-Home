@@ -21,6 +21,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- TMP TO DEL after config fix -->
+		<dependency>
+			<groupId>fr.umlv.m2.jee</groupId>
+			<artifactId>umlv-hibernate</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 		<!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>

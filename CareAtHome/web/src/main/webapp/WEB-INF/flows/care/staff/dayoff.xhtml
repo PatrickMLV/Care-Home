@@ -11,10 +11,62 @@
 </style>
 </h:head>
 <h:body>
-	<!-- CONTENT -->
-	<!-- modal in basic/main.xhtml -->
-	<p:commandButton update=":modalAddDayOff"  
-	value="Add Day Off" onclick="dlgAddDayOff.show();" type="button" />
-	
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<p:layoutUnit styleClass="include" position="center">
+			<h:form>
+				<p:commandButton update=":modalAddDayOff" value="Add Day Off"
+					onclick="dlgAddDayOff.show();" type="button" />
+
+				<p:dataTable var="dayoff"
+					value="#{dayOffManagerBean.dayOffDataModel}" paginator="true"
+					rows="10" selection="#{dayOffManagerBean.selectedDayOff}"
+					selectionMode="single">
+
+					<f:facet name="header">Your Day Off List</f:facet>
+					<p:column headerText="Begin">
+						<h:outputText value="#{dayoff.beginDate}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="End">
+						<h:outputText value="#{dayoff.endDate}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+		</p:layoutUnit>
+	</p:layout>
+
+	<!-- Add Dayoff Modal -->
+	<p:dialog id="modalAddDayOff" header="Add Day Off"
+		widgetVar="dlgAddDayOff" modal="true" height="130" width="400">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="From :" />
+				<p:inputText value="#{dayoffBean.dayOff.from}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="Nb days :" />
+				<p:inputText value="#{dayoffBean.dayOff.nbDays}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Save" action="#{dayoff.saveDayOff}"
+					onclick="dlgAddDayOff.hide();" type="button" icon="ui-icon-check" />
+				<p:commandButton value="Cancel" onclick="dlgAddDayOff.hide();"
+					type="button" icon="ui-icon-close" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 </h:body>
 </html>

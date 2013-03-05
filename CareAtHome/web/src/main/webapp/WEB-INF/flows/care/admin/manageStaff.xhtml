@@ -11,8 +11,20 @@
 </style>
 </h:head>
 <h:body>
-	<!-- CONTENT -->
-	MANAGE STAFF
-	
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<p:layoutUnit styleClass="include" position="center">
+			MANAGE STAFF
+		</p:layoutUnit>
+	</p:layout>
+
 </h:body>
 </html>

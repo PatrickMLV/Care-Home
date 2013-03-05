@@ -11,8 +11,69 @@
 </style>
 </h:head>
 <h:body>
-	<!-- CONTENT -->
-		CONSULT PATIENT
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<p:dataTable var="patient"
+					value="#{patientManagerBean.patientDataModel}" paginator="true"
+					rows="10" selection="#{patientManagerBean.selectedPatient}"
+					selectionMode="single">
+
+					<p:ajax event="rowSelect" update=":modalConsultPatient"
+						oncomplete="dlgConsultPatient.show()" />
+
+					<f:facet name="header">Patient List</f:facet>
+					<p:column headerText="Firstname">#{patient.firstName}</p:column>
+					<p:column headerText="LastName">#{patient.lastName}</p:column>
+					<p:column headerText="Priority">#{patient.priority}</p:column>
+					<p:column headerText="Address">#{patient.address}</p:column>
+				</p:dataTable>
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+
+	<!-- Consult Patient Modal -->
+	<p:dialog id="modalConsultPatient" header="Patient Information"
+		widgetVar="dlgConsultPatient" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.firstName}" />
+				<h:outputText value="Last name :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.lastName}" />
+				<h:outputText value="Birthday :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.birthday}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+				<h:outputText value="SSID :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.ssid}" />
+				<h:outputText value="Phone :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.phone}" />
+				<h:outputText value="Address :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.address}" />
+				<h:outputText value="Priority :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.priority}" />
+				<h:outputText value="Medecin :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.uuidMedecin}" />
+				<h:outputText value="Laboratory :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.uuidLaboratory}" />
+				<h:outputText value="Pharmacie :" />
+				<h:outputText value="#{patientManagerBean.selectedPatient.uuidPharmacie}" />
+			</h:panelGrid>
+			<p:commandButton value="Ok" onclick="dlgConsultPatient.hide();"
+				type="button" icon="ui-icon-close" />
+		</h:form>
+	</p:dialog>
+
 
 </h:body>
 </html>
