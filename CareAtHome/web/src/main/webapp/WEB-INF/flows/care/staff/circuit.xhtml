@@ -57,17 +57,7 @@ body {
 						value="GoogleMap" onclick="dlg.show()" style="width:150px;" />
 				</div>
 
-				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
-					<p:growl id="growl" showDetail="true" />
-					
 
-					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
-						zoom="#{mapBean.zoom}" type="HYBRID"
-						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
-						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-							update="growl" />
-					</p:gmap>
-				</p:dialog>
 
 				<br />
 
@@ -93,41 +83,23 @@ body {
 					</p:dataTable>
 
 				</h:form>
-				<br />
-				<br />
-				<div id="sep">
-					__________________________________________________</div>
-				<br />
-				<br />
-
-				<div id="centerMap">
-					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
-						zoom="#{mapBean.zoom}" type="HYBRID"
-						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
-						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-							update="growl" />
-
-					</p:gmap>
-				</div>
-
-
+				
 			</h:form>
 		</p:layoutUnit>
 	</p:layout>
 
+    <!-- put here for fix a bug (unclosable map windows)  -->
+	<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
+		<p:growl id="growl" showDetail="true" />
 
-<!--FIXME sans le bloc en dessous on ne peux plus ouvrir la map...
-!-->
-				<p:dialog widgetVar="dlg" width="625" height="400" modal="true">
-					<p:growl id="growl" showDetail="true" />
+		<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
+			zoom="#{mapBean.zoom}" type="HYBRID"
+			model="#{mapBean.simpleModel}" style="width:600px;height:400px">
+			<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
+				update="growl" />
+		</p:gmap>
+	</p:dialog>
 
-					<p:gmap center="#{mapBean.lat},#{mapBean.lon}"
-						zoom="#{mapBean.zoom}" type="HYBRID"
-						model="#{mapBean.simpleModel}" style="width:600px;height:400px">
-						<p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}"
-							update="growl" />
-					</p:gmap>
-				</p:dialog>
 </h:body>
 </html>
 
