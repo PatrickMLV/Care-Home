@@ -59,8 +59,10 @@
 				<h:outputText value="Referant :" />
 				<h:outputText value="#{staffManagerBean.selectedStaff.referant}" />
 			</h:panelGrid>
+			<h:panelGrid columns="1" style="margin-left: auto;margin-right: auto;">
 			<p:commandButton value="Ok" onclick="dlgConsultStaff.hide();"
-				type="button" icon="ui-icon-close" />
+				type="button" />
+			</h:panelGrid>
 		</h:form>
 	</p:dialog>
 

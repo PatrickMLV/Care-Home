@@ -29,7 +29,7 @@
 					selectionMode="single">
 
 					<p:ajax event="rowSelect" update=":modalConsultPatient"
-						oncomplete="dlgConsultPatient.show()" />
+						oncomplete="dlgConsultPatient.show();" />
 
 					<f:facet name="header">Patient List</f:facet>
 					<p:column headerText="Firstname">#{patient.firstName}</p:column>
@@ -46,34 +46,91 @@
 		widgetVar="dlgConsultPatient" modal="true">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText value="First name :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.firstName}" />
-				<h:outputText value="Last name :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.lastName}" />
-				<h:outputText value="Birthday :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.birthday}" >
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-				<h:outputText value="SSID :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.ssid}" />
-				<h:outputText value="Phone :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.phone}" />
-				<h:outputText value="Address :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.address}" />
-				<h:outputText value="Priority :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.priority}" />
-				<h:outputText value="Medecin :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.uuidMedecin}" />
-				<h:outputText value="Laboratory :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.uuidLaboratory}" />
-				<h:outputText value="Pharmacie :" />
-				<h:outputText value="#{patientManagerBean.selectedPatient.uuidPharmacie}" />
+				<h:panelGrid columns="2" border="1">
+					<h:outputText value="First name " />
+					<h:outputText
+						value="#{patientManagerBean.selectedPatient.firstName}" />
+					<h:outputText value="Last name " />
+					<h:outputText
+						value="#{patientManagerBean.selectedPatient.lastName}" />
+					<h:outputText value="Birthday " />
+					<h:outputText
+						value="#{patientManagerBean.selectedPatient.birthday}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					<h:outputText value="SSID " />
+					<h:outputText value="#{patientManagerBean.selectedPatient.ssid}" />
+					<h:outputText value="Phone " />
+					<h:outputText value="#{patientManagerBean.selectedPatient.phone}" />
+					<h:outputText value="Address " />
+					<h:outputText value="#{patientManagerBean.selectedPatient.address}" />
+					<h:outputText value="Priority " />
+					<h:outputText
+						value="#{patientManagerBean.selectedPatient.priority}" />
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<h:outputText value="Medecin :" />
+					<h:panelGrid columns="2" border="1">
+						<h:outputText value="First name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.firstName}" />
+						<h:outputText value="Last name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.lastName}" />
+						<h:outputText value="Birthday" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.birthday}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+						<h:outputText value="SSID" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.ssid}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.adress}" />
+					</h:panelGrid>
+					<h:outputText value="Laboratory :" />
+					<h:panelGrid columns="2" border="1">
+						<h:outputText value="Name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.name}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.adress}" />
+					</h:panelGrid>
+					<h:outputText value="Pharmacie :" />
+					<h:panelGrid columns="2" border="1">
+						<h:outputText value="Name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.name}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.adress}" />
+					</h:panelGrid>
+				</h:panelGrid>
 			</h:panelGrid>
-			<p:commandButton value="Ok" onclick="dlgConsultPatient.hide();"
-				type="button" icon="ui-icon-close" />
+			<h:panelGrid columns="1"
+				style="margin-left: auto;margin-right: auto;">
+				<p:commandButton value="Ok" onclick="dlgConsultPatient.hide();"
+					type="button" />
+			</h:panelGrid>
 		</h:form>
 	</p:dialog>
 
+	<p:dialog id="modalMedecin" header="Medecin Information"
+		widgetVar="dlgMedecin" modal="true">
+		<h:outputText value="Last name :" />
+		<h:outputText value="#{medecinManagerBean.selectedMedecin.lastName}" />
+	</p:dialog>
 
 </h:body>
 </html>

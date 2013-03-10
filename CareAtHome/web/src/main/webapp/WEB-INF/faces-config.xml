@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
-    version="2.1">
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
 
 	<application>
 		<message-bundle>JsfMessageResources</message-bundle>
 	</application>
-    
+
+	<converter>
+		<converter-id>medecinConverter</converter-id>
+		<converter-class>converter.MedecinConverter</converter-class>
+	</converter>
+	<converter>
+		<converter-id>laboratoryConverter</converter-id>
+		<converter-class>converter.LaboratoryConverter</converter-class>
+	</converter>
+	<converter>
+		<converter-id>pharmacieConverter</converter-id>
+		<converter-class>converter.PharmacieConverter</converter-class>
+	</converter>
+
 </faces-config>

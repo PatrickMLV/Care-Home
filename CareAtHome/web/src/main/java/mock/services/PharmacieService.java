@@ -1,5 +1,8 @@
 package mock.services;
 
+import java.util.List;
+
+import mock.beans.Pharmacie;
 import mock.beans.Pharmacie;
 import mock.dao.IPharmacieDAO;
 
@@ -21,6 +24,26 @@ public class PharmacieService {
 	@Transactional()
 	public Pharmacie getPharmacieByUuid(int uuid) {
 		return pharmacieDAO.getPharmacieByUuid(uuid);
+	}
+	
+	@Transactional()
+	public List<Pharmacie> getAllPharmacie() {
+		return pharmacieDAO.findAll();
+	}
+	
+	@Transactional()
+	public void createPharmacie(Pharmacie pharmacie) {
+		pharmacieDAO.persist(pharmacie);
+	}
+	
+	@Transactional()
+	public void updatePharmacie(Pharmacie pharmacie) {
+		pharmacieDAO.merge(pharmacie);
+	}
+	
+	@Transactional()
+	public void deletePharmacie(Pharmacie pharmacie) {
+		pharmacieDAO.remove(pharmacie);
 	}
 
 }

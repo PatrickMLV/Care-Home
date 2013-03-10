@@ -44,5 +44,15 @@ public class PersonnelService {
 	public void create(Personnel personnel) {
 		personnelDAO.persist(personnel);
 	}
+	
+	@Transactional()
+	public void delete(Personnel personnel) {
+		personnelDAO.remove(personnel);
+	}
+	
+	@Transactional()
+	public void update(Personnel personnel) {
+		personnelDAO.merge(personnel);
+	}
 
 }

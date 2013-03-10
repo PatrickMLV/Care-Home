@@ -63,7 +63,7 @@ public class MapBean implements Serializable {
 	public MapBean() {
 		users.add(new Patient(15, "Fac", "MLV", new Date(), "alalala",
 				"Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne",
-				 "0606060606","1AP", 200, 300, 400));
+				 "0606060606","1AP", null, null, null));
 		users.add(new Patient(
 				16,
 				"Aerodrome",
@@ -71,10 +71,10 @@ public class MapBean implements Serializable {
 				new Date(),
 				"alalala",
 				"Aerodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
-				 "0707070707","1AP", 200, 300, 400));
+				 "0707070707","1AP", null, null, null));
 		users.add(new Patient(17, "Ecole", "Esiee", new Date(), "alalala",
 				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee", 
-				"0808080808","1AP", 200, 300, 400));
+				"0808080808","1AP", null, null, null));
 
 		simpleModel = new DefaultMapModel();
 

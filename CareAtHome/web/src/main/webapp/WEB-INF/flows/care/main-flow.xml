@@ -24,6 +24,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
@@ -38,6 +41,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
@@ -52,6 +58,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
@@ -63,6 +72,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
@@ -77,6 +89,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>
@@ -88,9 +103,95 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
+		
+		<transition on="createPatient" to="managePatient">
+			<evaluate expression="patientManagerBean.createPatient()"></evaluate>
+		</transition>
+		<transition on="updatePatient" to="managePatient">
+			<evaluate expression="patientManagerBean.updatePatient()"></evaluate>
+		</transition>
+		<transition on="deletePatient" to="managePatient">
+			<evaluate expression="patientManagerBean.deletePatient()"></evaluate>
+		</transition>
 	</view-state>
+	
+	<view-state id="manageMedecin" view="admin/manageMedecin.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+		
+		<transition on="createMedecin" to="manageMedecin">
+			<evaluate expression="medecinManagerBean.createMedecin()"></evaluate>
+		</transition>
+		<transition on="updateMedecin" to="manageMedecin">
+			<evaluate expression="medecinManagerBean.updateMedecin()"></evaluate>
+		</transition>
+		<transition on="deleteMedecin" to="manageMedecin">
+			<evaluate expression="medecinManagerBean.deleteMedecin()"></evaluate>
+		</transition>
+	</view-state>
+	
+	<view-state id="managePharmacie" view="admin/managePharmacie.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+		
+		<transition on="createPharmacie" to="managePharmacie">
+			<evaluate expression="pharmacieManagerBean.createPharmacie()"></evaluate>
+		</transition>
+		<transition on="updatePharmacie" to="managePharmacie">
+			<evaluate expression="pharmacieManagerBean.updatePharmacie()"></evaluate>
+		</transition>
+		<transition on="deletePharmacie" to="managePharmacie">
+			<evaluate expression="pharmacieManagerBean.deletePharmacie()"></evaluate>
+		</transition>
+	</view-state>
+	
+	<view-state id="manageLaboratory" view="admin/manageLaboratory.xhtml">
+		<transition on="logout" to="login" />
+		<transition on="goToConsultPatient" to="consultPatient" />
+		<transition on="goToConsultStaff" to="consultStaff" />
+		<transition on="goToCircuitStaff" to="circuitStaff" />
+		<transition on="goToDayOffStaff" to="dayOffStaff" />
+		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
+		<transition on="goToManageStaff" to="manageStaff" />
+		<transition on="goToEvaluation" to="evaluation" />
+		
+		<transition on="createLaboratory" to="manageLaboratory">
+			<evaluate expression="laboratoryManagerBean.createLaboratory()"></evaluate>
+		</transition>
+		<transition on="updateLaboratory" to="manageLaboratory">
+			<evaluate expression="laboratoryManagerBean.updateLaboratory()"></evaluate>
+		</transition>
+		<transition on="deleteLaboratory" to="manageLaboratory">
+			<evaluate expression="laboratoryManagerBean.deleteLaboratory()"></evaluate>
+		</transition>
+	</view-state>
+	
 	
 	<view-state id="manageStaff" view="admin/manageStaff.xhtml">
 		<transition on="logout" to="login" />
@@ -99,8 +200,21 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
+		
+		<transition on="createStaff" to="manageStaff">
+			<evaluate expression="staffManagerBean.createStaff()"></evaluate>
+		</transition>
+		<transition on="updateStaff" to="manageStaff">
+			<evaluate expression="staffManagerBean.updateStaff()"></evaluate>
+		</transition>
+		<transition on="deleteStaff" to="manageStaff">
+			<evaluate expression="staffManagerBean.deleteStaff()"></evaluate>
+		</transition>
 	</view-state>
 	
 	<view-state id="evaluation" view="admin/evaluation.xhtml">
@@ -110,6 +224,9 @@
 		<transition on="goToCircuitStaff" to="circuitStaff" />
 		<transition on="goToDayOffStaff" to="dayOffStaff" />
 		<transition on="goToManagePatient" to="managePatient" />
+		<transition on="goToManageMedecin" to="manageMedecin" />
+		<transition on="goToManagePharmacie" to="managePharmacie" />
+		<transition on="goToManageLaboratory" to="manageLaboratory" />
 		<transition on="goToManageStaff" to="manageStaff" />
 		<transition on="goToEvaluation" to="evaluation" />
 	</view-state>

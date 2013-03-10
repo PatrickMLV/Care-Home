@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+.ui-dt-c,.ui-button-text {
+	padding: 0;
+}
+</style>
+
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<p:commandButton value="Add Laboratory" onclick="dlgAddLaboratory.show()" />
+
+				<p:dataTable var="laboratory" value="#{laboratoryManagerBean.laboratoryList}"
+					paginator="true" rows="10">
+
+					<f:facet name="header">Laboratory List</f:facet>
+					<p:column headerText="Name">#{laboratory.name}</p:column>
+					<p:column headerText="Modify" style="text-align: center">
+						<p:commandButton update=":modalUpdateLaboratory"
+							oncomplete="dlgUpdateLaboratory.show()" icon="ui-icon-document">
+							<f:setPropertyActionListener value="#{laboratory}"
+								target="#{laboratoryManagerBean.selectedLaboratory}" />
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Delete" style="text-align: center">
+						<p:commandButton update=":modalDeleteLaboratory"
+							oncomplete="dlgDeleteLaboratory.show()" icon="ui-icon-trash" >
+							<f:setPropertyActionListener value="#{laboratory}"
+								target="#{laboratoryManagerBean.selectedLaboratory}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+
+	<!-- Laboratory Add Modal -->
+	<p:dialog id="modalAddLaboratory" header="Laboratory Information"
+		widgetVar="dlgAddLaboratory" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name :" />
+				<p:inputText value="#{laboratoryManagerBean.newLaboratory.name}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{laboratoryManagerBean.newLaboratory.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{laboratoryManagerBean.newLaboratory.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgAddLaboratory.hide();"
+					action="createLaboratory" />
+				<h:commandButton value="Cancel" onclick="dlgAddLaboratory.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Laboratory Update Modal -->
+	<p:dialog id="modalUpdateLaboratory" header="Laboratory Information"
+		widgetVar="dlgUpdateLaboratory" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name :" />
+				<p:inputText value="#{laboratoryManagerBean.selectedLaboratory.name}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{laboratoryManagerBean.selectedLaboratory.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{laboratoryManagerBean.selectedLaboratory.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgUpdateLaboratory.hide();"
+					action="updateLaboratory" />
+				<h:commandButton value="Cancel" onclick="dlgUpdateLaboratory.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Laboratory Dalete Modal -->
+	<p:dialog id="modalDeleteLaboratory" header="Delete Laboratory"
+		widgetVar="dlgDeleteLaboratory" modal="true">
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:outputText value="Are you sure to delete this Laboratory ?" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Delete" action="deleteLaboratory"
+					onclick="dlgDeleteLaboratory.hide();" />
+				<h:commandButton value="Cancel" onclick="dlgDeletePharmacie.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

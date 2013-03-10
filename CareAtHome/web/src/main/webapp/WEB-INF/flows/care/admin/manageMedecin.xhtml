@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+.ui-dt-c,.ui-button-text {
+	padding: 0;
+}
+</style>
+
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<p:commandButton value="Add Medecin" onclick="dlgAddMedecin.show()" />
+
+				<p:dataTable var="medecin" value="#{medecinManagerBean.medecinList}"
+					paginator="true" rows="10">
+
+					<f:facet name="header">Medecin List</f:facet>
+					<p:column headerText="Firstname">#{medecin.firstName}</p:column>
+					<p:column headerText="LastName">#{medecin.lastName}</p:column>
+					<p:column headerText="Modify" style="text-align: center">
+						<p:commandButton update=":modalUpdateMedecin"
+							oncomplete="dlgUpdateMedecin.show()" icon="ui-icon-document">
+							<f:setPropertyActionListener value="#{medecin}"
+								target="#{medecinManagerBean.selectedMedecin}" />
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Delete" style="text-align: center">
+						<p:commandButton update=":modalDeleteMedecin"
+							oncomplete="dlgDeleteMedecin.show()" icon="ui-icon-trash" >
+							<f:setPropertyActionListener value="#{medecin}"
+								target="#{medecinManagerBean.selectedMedecin}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+
+	<!-- Medecin Add Modal -->
+	<p:dialog id="modalAddMedecin" header="Medecin Information"
+		widgetVar="dlgAddMedecin" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.firstName}" />
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.lastName}" />
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="SSID :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.ssid}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgAddMedecin.hide();"
+					action="createMedecin" />
+				<h:commandButton value="Cancel" onclick="dlgAddMedecin.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Medecin Update Modal -->
+	<p:dialog id="modalUpdateMedecin" header="Medecin Information"
+		widgetVar="dlgUpdateMedecin" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.firstName}" />
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.lastName}" />
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="SSID :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.ssid}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{medecinManagerBean.selectedMedecin.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgUpdateMedecin.hide();"
+					action="updateMedecin" />
+				<h:commandButton value="Cancel" onclick="dlgUpdateMedecin.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Medecin Dalete Modal -->
+	<p:dialog id="modalDeleteMedecin" header="Delete Medecin"
+		widgetVar="dlgDeleteMedecin" modal="true">
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:outputText value="Are you sure to delete this medecin ?" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Delete" action="deleteMedecin"
+					onclick="dlgDeleteMedecin.hide();" />
+				<h:commandButton value="Cancel" onclick="dlgDeleteMedecin.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

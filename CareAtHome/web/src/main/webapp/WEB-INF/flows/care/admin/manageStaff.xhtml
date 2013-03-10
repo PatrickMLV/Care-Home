@@ -8,7 +8,11 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<style>
+.ui-dt-c,.ui-button-text {
+	padding: 0;
+}
 </style>
+
 </h:head>
 <h:body>
 	<p:layout fullPage="true">
@@ -21,10 +25,107 @@
 			<ui:include src="../basic/menu.xhtml" />
 		</p:layoutUnit>
 		<!-- CONTENT -->
-		<p:layoutUnit styleClass="include" position="center">
-			MANAGE STAFF
-		</p:layoutUnit>
+		<h:form>
+			<p:layoutUnit position="center">
+				<p:commandButton value="Add Staff" onclick="dlgAddStaff.show()" />
+
+				<p:dataTable var="staff" value="#{staffManagerBean.staffList}"
+					paginator="true" rows="10">
+
+					<f:facet name="header">Staff List</f:facet>
+					<p:column headerText="Firstname">#{staff.firstName}</p:column>
+					<p:column headerText="LastName">#{staff.lastName}</p:column>
+					<p:column headerText="Modify" style="text-align: center">
+						<p:commandButton update=":modalUpdateStaff"
+							oncomplete="dlgUpdateStaff.show()" icon="ui-icon-document">
+							<f:setPropertyActionListener value="#{staff}"
+								target="#{staffManagerBean.selectedStaff}" />
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Delete" style="text-align: center">
+						<p:commandButton update=":modalDeleteStaff"
+							oncomplete="dlgDeleteStaff.show()" icon="ui-icon-trash" >
+							<f:setPropertyActionListener value="#{staff}"
+								target="#{staffManagerBean.selectedStaff}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:layoutUnit>
+		</h:form>
 	</p:layout>
 
+	<!-- Staff Add Modal -->
+	<p:dialog id="modalAddStaff" header="Staff Information"
+		widgetVar="dlgAddStaff" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{staffManagerBean.newStaff.firstName}" />
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{staffManagerBean.newStaff.lastName}" />
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{staffManagerBean.newStaff.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="SSID :" />
+				<p:inputText value="#{staffManagerBean.newStaff.ssid}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{staffManagerBean.newStaff.phone}" />
+				<h:outputText value="Referant :" />
+				<p:inputText value="#{staffManagerBean.newStaff.referant}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgAddStaff.hide();"
+					action="createStaff" />
+				<h:commandButton value="Cancel" onclick="dlgAddStaff.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Staff Update Modal -->
+	<p:dialog id="modalUpdateStaff" header="Staff Information"
+		widgetVar="dlgUpdateStaff" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.firstName}" />
+				<h:outputText value="Last name :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.lastName}" />
+				<h:outputText value="Birthday :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<h:outputText value="SSID :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.ssid}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.phone}" />
+				<h:outputText value="Referant :" />
+				<p:inputText value="#{staffManagerBean.selectedStaff.referant}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgUpdateStaff.hide();"
+					action="updateStaff" />
+				<h:commandButton value="Cancel" onclick="dlgUpdateStaff.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Staff Dalete Modal -->
+	<p:dialog id="modalDeleteStaff" header="Delete Staff"
+		widgetVar="dlgDeleteStaff" modal="true">
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:outputText value="Are you sure to delete this staff ?" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Delete" action="deleteStaff"
+					onclick="dlgDeleteStaff.hide();" />
+				<h:commandButton value="Cancel" onclick="dlgDeleteStaff.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 </h:body>
 </html>

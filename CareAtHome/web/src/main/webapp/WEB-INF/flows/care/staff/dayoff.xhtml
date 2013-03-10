@@ -60,7 +60,7 @@
 				<h:outputText value="Nb days :" />
 				<p:inputText value="#{dayoffBean.dayOff.nbDays}" />
 			</h:panelGrid>
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" style="margin-left: auto;margin-right: auto;">
 				<p:commandButton value="Save" action="#{dayoff.saveDayOff}"
 					onclick="dlgAddDayOff.hide();" type="button" icon="ui-icon-check" />
 				<p:commandButton value="Cancel" onclick="dlgAddDayOff.hide();"

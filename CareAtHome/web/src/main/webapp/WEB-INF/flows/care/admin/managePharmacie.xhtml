@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+.ui-dt-c,.ui-button-text {
+	padding: 0;
+}
+</style>
+
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<!-- BANNER -->
+		<p:layoutUnit position="north" id="menu">
+			<ui:include src="../basic/banner.xhtml" />
+		</p:layoutUnit>
+		<!-- MENU -->
+		<p:layoutUnit position="west">
+			<ui:include src="../basic/menu.xhtml" />
+		</p:layoutUnit>
+		<!-- CONTENT -->
+		<h:form>
+			<p:layoutUnit position="center">
+				<p:commandButton value="Add Pharmacie" onclick="dlgAddPharmacie.show()" />
+
+				<p:dataTable var="pharmacie" value="#{pharmacieManagerBean.pharmacieList}"
+					paginator="true" rows="10">
+
+					<f:facet name="header">Pharmacie List</f:facet>
+					<p:column headerText="Name">#{pharmacie.name}</p:column>
+					<p:column headerText="Modify" style="text-align: center">
+						<p:commandButton update=":modalUpdatePharmacie"
+							oncomplete="dlgUpdatePharmacie.show()" icon="ui-icon-document">
+							<f:setPropertyActionListener value="#{pharmacie}"
+								target="#{pharmacieManagerBean.selectedPharmacie}" />
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Delete" style="text-align: center">
+						<p:commandButton update=":modalDeletePharmacie"
+							oncomplete="dlgDeletePharmacie.show()" icon="ui-icon-trash" >
+							<f:setPropertyActionListener value="#{pharmacie}"
+								target="#{pharmacieManagerBean.selectedPharmacie}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:layoutUnit>
+		</h:form>
+	</p:layout>
+
+	<!-- Pharmacie Add Modal -->
+	<p:dialog id="modalAddPharmacie" header="Pharmacie Information"
+		widgetVar="dlgAddPharmacie" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name :" />
+				<p:inputText value="#{pharmacieManagerBean.newPharmacie.name}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{pharmacieManagerBean.newPharmacie.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{pharmacieManagerBean.newPharmacie.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgAddPharmacie.hide();"
+					action="createPharmacie" />
+				<h:commandButton value="Cancel" onclick="dlgAddPharmacie.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Pharmacie Update Modal -->
+	<p:dialog id="modalUpdatePharmacie" header="Pharmacie Information"
+		widgetVar="dlgUpdatePharmacie" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name :" />
+				<p:inputText value="#{pharmacieManagerBean.selectedPharmacie.name}" />
+				<h:outputText value="Phone :" />
+				<p:inputText value="#{pharmacieManagerBean.selectedPharmacie.phone}" />
+				<h:outputText value="Address :" />
+				<p:inputText value="#{pharmacieManagerBean.selectedPharmacie.adress}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgUpdatePharmacie.hide();"
+					action="updatePharmacie" />
+				<h:commandButton value="Cancel" onclick="dlgUpdatePharmacie.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Pharmacie Dalete Modal -->
+	<p:dialog id="modalDeletePharmacie" header="Delete Pharmacie"
+		widgetVar="dlgDeletePharmacie" modal="true">
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:outputText value="Are you sure to delete this Pharmacie ?" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Delete" action="deletePharmacie"
+					onclick="dlgDeletePharmacie.hide();" />
+				<h:commandButton value="Cancel" onclick="dlgDeletePharmacie.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

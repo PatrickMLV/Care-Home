@@ -17,7 +17,6 @@ public class DayOffManagerBean {
 	private DayOff selectedDayOff;
 	private DayOffDataModel dayOffDataModel;
 	
-	// begin to delete
 	private DayOffService dayOffService = new DayOffService(new DayOffDAO());
 	
 	public void init(int userUuid){

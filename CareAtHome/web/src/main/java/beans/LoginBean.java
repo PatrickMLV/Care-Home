@@ -19,7 +19,6 @@ public class LoginBean {
 	private String password;
 	private Actor user;
 	
-	// begin to delete
 	private ActorService actorService = new ActorService(new ActorDAO());
 	
 	public String getLogin() {

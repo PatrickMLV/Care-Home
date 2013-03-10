@@ -23,34 +23,163 @@
 		<!-- CONTENT -->
 		<h:form>
 			<p:layoutUnit position="center">
-				<p:commandButton update=":modalAddPatient"
-					action="#{evaluationBean.newPatient}" value="Add Patient"
-					onclick="dlgAddPatient.show();" type="button" />
+				<p:commandButton value="Add Patient" onclick="dlgAddPatient.show()" />
+
+				<p:dataTable var="patient" value="#{patientManagerBean.patientList}"
+					paginator="true" rows="10">
+
+					<f:facet name="header">Patient List</f:facet>
+					<p:column headerText="Firstname">#{patient.firstName}</p:column>
+					<p:column headerText="LastName">#{patient.lastName}</p:column>
+					<p:column headerText="Priority">#{patient.priority}</p:column>
+					<p:column headerText="Address">#{patient.address}</p:column>
+					<p:column headerText="Modify" style="text-align: center">
+						<p:commandButton update=":modalUpdatePatient"
+							oncomplete="dlgUpdatePatient.show()" icon="ui-icon-document">
+							<f:setPropertyActionListener value="#{patient}"
+								target="#{patientManagerBean.selectedPatient}" />
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Delete" style="text-align: center">
+						<p:commandButton update=":modalDeletePatient"
+							oncomplete="dlgDeletePatient.show()" icon="ui-icon-trash">
+							<f:setPropertyActionListener value="#{patient}"
+								target="#{patientManagerBean.selectedPatient}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
 			</p:layoutUnit>
 		</h:form>
 	</p:layout>
 
 	<!-- Add Patient Modal -->
-	<p:dialog id="modalAddPatient" header="Add Patient"
-		widgetVar="dlgAddPatient" modal="true" height="400" width="600">
+	<p:dialog id="modalAddPatient" header="Patient Information"
+		widgetVar="dlgAddPatient" modal="true">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText value="First name :" />
-				<p:inputText value="#{patientBean.patient.firstName}" />
-				<h:outputText value="Last name :" />
-				<p:inputText value="#{patientBean.patient.lastName}" />
-				<h:outputText value="Birthday :" />
-				<p:inputText value="#{patientBean.patient.birthday}" />
-				<h:outputText value="Ssid :" />
-				<p:inputText value="#{patientBean.patient.ssid}" />
-				<h:outputText value="Phone :" />
-				<p:inputText value="#{patientBean.patient.phone}" />
+				<h:outputText id="firstname" value="First name :" />
+				<p:inputText value="#{patientManagerBean.newPatient.firstName}" />
+
+				<h:outputText id="lastname" value="Last name :" />
+				<p:inputText value="#{patientManagerBean.newPatient.lastName}" />
+
+				<h:outputText id="birthday" value="Birthday :" />
+				<p:inputText value="#{patientManagerBean.newPatient.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+
+				<h:outputText id="ssid" value="Ssid :" />
+				<p:inputText value="#{patientManagerBean.newPatient.ssid}" />
+
+				<h:outputText id="phone" value="Phone :" />
+				<p:inputText value="#{patientManagerBean.newPatient.phone}" />
+
+				<h:outputText id="address" value="Address :" />
+				<p:inputText value="#{patientManagerBean.newPatient.address}" />
+
+				<h:outputText id="priority" value="Priority :" />
+				<p:inputText value="#{patientManagerBean.newPatient.priority}" />
+
+				<h:outputText id="medecin" value="Medecin :" />
+				<p:selectOneMenu value="#{patientManagerBean.newPatient.medecin}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="medecinConverter" />
+					<f:selectItems value="#{medecinManagerBean.medecinList}"/>
+				</p:selectOneMenu>
+				
+				<h:outputText id="pharmacie" value="Pharmacie :" />
+				<p:selectOneMenu value="#{patientManagerBean.newPatient.pharmacie}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="pharmacieConverter" />
+					<f:selectItems value="#{pharmacieManagerBean.pharmacieList}"/>
+				</p:selectOneMenu>
+				
+				<h:outputText id="laboratory" value="Laboratory :" />
+				<p:selectOneMenu value="#{patientManagerBean.newPatient.laboratory}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="laboratoryConverter" />
+					<f:selectItems value="#{laboratoryManagerBean.laboratoryList}"/>
+				</p:selectOneMenu>
 			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgAddPatient.hide();"
+					action="createPatient" />
+				<h:commandButton value="Cancel" onclick="dlgAddPatient.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Update Patient Modal -->
+	<p:dialog id="modalUpdatePatient" header="Patient Information"
+		widgetVar="dlgUpdatePatient" modal="true">
+		<h:form>
 			<h:panelGrid columns="2">
-				<p:commandButton value="Save" action="#{patientBean.savePatient}"
-					onclick="dlgAddPatient.hide();" type="button" icon="ui-icon-check" />
-				<p:commandButton value="Cancel" onclick="dlgAddPatient.hide();"
-					type="button" icon="ui-icon-close" />
+				<h:outputText id="firstname" value="First name :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.firstName}" />
+
+				<h:outputText id="lastname" value="Last name :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.lastName}" />
+
+				<h:outputText id="birthday" value="Birthday :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.birthday}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+
+				<h:outputText id="ssid" value="Ssid :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.ssid}" />
+
+				<h:outputText id="phone" value="Phone :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.phone}" />
+
+				<h:outputText id="address" value="Address :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.address}" />
+
+				<h:outputText id="priority" value="Priority :" />
+				<p:inputText value="#{patientManagerBean.selectedPatient.priority}" />
+				
+				<h:outputText id="medecin" value="Medecin :" />
+				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.medecin}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="medecinConverter" />
+					<f:selectItems value="#{medecinManagerBean.medecinList}"/>
+				</p:selectOneMenu>
+				
+				<h:outputText id="pharmacie" value="Pharmacie :" />
+				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.pharmacie}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="pharmacieConverter" />
+					<f:selectItems value="#{pharmacieManagerBean.pharmacieList}"/>
+				</p:selectOneMenu>
+				
+				<h:outputText id="laboratory" value="Laboratory :" />
+				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.laboratory}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:converter converterId="laboratoryConverter" />
+					<f:selectItems value="#{laboratoryManagerBean.laboratoryList}"/>
+				</p:selectOneMenu>
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Ok" onclick="dlgUpdatePatient.hide();"
+					action="updatePatient" />
+				<h:commandButton value="Cancel" onclick="dlgUpdatePatient.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<!-- Patient Dalete Modal -->
+	<p:dialog id="modalDeletePatient" header="Delete Patient"
+		widgetVar="dlgDeletePatient" modal="true">
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:outputText value="Are you sure to delete this patient ?" />
+			</h:panelGrid>
+			<h:panelGrid columns="2"
+				style="margin-left: auto;margin-right: auto;">
+				<h:commandButton value="Delete" action="deletePatient"
+					onclick="dlgDeletePatient.hide();" />
+				<h:commandButton value="Cancel" onclick="dlgDeletePatient.hide();" />
 			</h:panelGrid>
 		</h:form>
 	</p:dialog>

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -38,21 +40,24 @@ public class Patient extends Actor  {
     @Column(name = "PRIORITY")
     private String priority;
     
-    @Column(name = "UUID_MEDECIN")
-    private int uuidMedecin;
+    @ManyToOne(optional=true) 
+    @JoinColumn(name="UUID_MEDECIN")
+    private Medecin medecin;
     
-    @Column(name = "UUID_LABORATORY")
-    private int uuidLaboratory;
+    @ManyToOne(optional=true) 
+    @JoinColumn(name="UUID_LABORATORY")
+    private Laboratory laboratory;
     
-    @Column(name = "UUID_PHARMACIE")
-    private int uuidPharmacie;
+    @ManyToOne(optional=true) 
+    @JoinColumn(name="UUID_PHARMACIE")
+    private Pharmacie pharmacie;
 	
     public Patient() {
 	}
 
 	public Patient(int uuid, String firstName, String lastName, Date birthday,
 			String ssid, String address, String phone, String priority,
-			int uuidMedecin, int uuidLaboratory, int uuidPharmacie) {
+			Medecin medecin, Laboratory laboratory, Pharmacie pharmacie) {
 		super();
 		this.uuid = uuid;
 		this.firstName = firstName;
@@ -62,9 +67,9 @@ public class Patient extends Actor  {
 		this.address = address;
 		this.phone = phone;
 		this.priority = priority;
-		this.uuidMedecin = uuidMedecin;
-		this.uuidLaboratory = uuidLaboratory;
-		this.uuidPharmacie = uuidPharmacie;
+		this.medecin = medecin;
+		this.laboratory = laboratory;
+		this.pharmacie = pharmacie;
 	}
 
 	public int getUuid() {
@@ -131,28 +136,28 @@ public class Patient extends Actor  {
 		this.priority = priority;
 	}
 
-	public int getUuidMedecin() {
-		return uuidMedecin;
+	public Medecin getMedecin() {
+		return medecin;
 	}
 
-	public void setUuidMedecin(int uuidMedecin) {
-		this.uuidMedecin = uuidMedecin;
+	public void setMedecin(Medecin medecin) {
+		this.medecin = medecin;
 	}
 
-	public int getUuidLaboratory() {
-		return uuidLaboratory;
+	public Laboratory getLaboratory() {
+		return laboratory;
 	}
 
-	public void setUuidLaboratory(int uuidLaboratory) {
-		this.uuidLaboratory = uuidLaboratory;
+	public void setLaboratory(Laboratory laboratory) {
+		this.laboratory = laboratory;
 	}
 
-	public int getUuidPharmacie() {
-		return uuidPharmacie;
+	public Pharmacie getPharmacie() {
+		return pharmacie;
 	}
 
-	public void setUuidPharmacie(int uuidPharmacie) {
-		this.uuidPharmacie = uuidPharmacie;
+	public void setPharmacie(Pharmacie pharmacie) {
+		this.pharmacie = pharmacie;
 	}
     
 }
