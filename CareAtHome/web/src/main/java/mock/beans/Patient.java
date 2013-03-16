@@ -40,6 +40,12 @@ public class Patient extends Actor  {
     @Column(name = "PRIORITY")
     private String priority;
     
+    private int monday = -1;
+    private int tuesday = -1;
+    private int wednesday = -1;
+    private int thursday = -1;
+    private int friday = -1;
+    
     @ManyToOne(optional=true) 
     @JoinColumn(name="UUID_MEDECIN")
     private Medecin medecin;
@@ -158,6 +164,46 @@ public class Patient extends Actor  {
 
 	public void setPharmacie(Pharmacie pharmacie) {
 		this.pharmacie = pharmacie;
+	}
+
+	public int getMonday() {
+		return monday;
+	}
+
+	public void setMonday(int monday) {
+		this.monday = monday;
+	}
+
+	public int getTuesday() {
+		return tuesday;
+	}
+
+	public void setTuesday(int tuesday) {
+		this.tuesday = tuesday;
+	}
+
+	public int getWednesday() {
+		return wednesday;
+	}
+
+	public void setWednesday(int wednesday) {
+		this.wednesday = wednesday;
+	}
+
+	public int getThursday() {
+		return thursday;
+	}
+
+	public void setThursday(int thursday) {
+		this.thursday = thursday;
+	}
+
+	public int getFriday() {
+		return friday;
+	}
+
+	public void setFriday(int friday) {
+		this.friday = friday;
 	}
     
 }

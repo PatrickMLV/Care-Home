@@ -23,9 +23,9 @@
 		<!-- CONTENT -->
 		<h:form>
 			<p:layoutUnit position="center">
-				<p:dataTable var="staff"
-					value="#{staffManagerBean.staffDataModel}" paginator="true"
-					rows="10" selection="#{staffManagerBean.selectedStaff}"
+				<p:dataTable var="staff" value="#{staffManagerBean.staffDataModel}"
+					paginator="true" rows="10"
+					selection="#{staffManagerBean.selectedStaff}"
 					selectionMode="single">
 
 					<p:ajax event="rowSelect" update=":modalConsultStaff"
@@ -43,26 +43,29 @@
 	<p:dialog id="modalConsultStaff" header="Staff Information"
 		widgetVar="dlgConsultStaff" modal="true">
 		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="First name :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.firstName}" />
-				<h:outputText value="Last name :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.lastName}" />
-				<h:outputText value="Birthday :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.birthday}" >
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-				<h:outputText value="SSID :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.ssid}" />
-				<h:outputText value="Phone :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.phone}" />
-				<h:outputText value="Referant :" />
-				<h:outputText value="#{staffManagerBean.selectedStaff.referant}" />
-			</h:panelGrid>
-			<h:panelGrid columns="1" style="margin-left: auto;margin-right: auto;">
-			<p:commandButton value="Ok" onclick="dlgConsultStaff.hide();"
-				type="button" />
-			</h:panelGrid>
+			<p:panelGrid columns="1">
+				<h:panelGrid columns="2">
+					<h:outputText value="First name" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.firstName}" />
+					<h:outputText value="Last name" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.lastName}" />
+					<h:outputText value="Birthday" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.birthday}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					<h:outputText value="SSID" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.ssid}" />
+					<h:outputText value="Phone" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.phone}" />
+					<h:outputText value="Referant" />
+					<h:outputText value="#{staffManagerBean.selectedStaff.referant}" />
+				</h:panelGrid>
+				<h:panelGrid columns="1"
+					style="margin-left: auto;margin-right: auto;">
+					<p:commandButton value="Ok" onclick="dlgConsultStaff.hide();"
+						type="button" />
+				</h:panelGrid>
+			</p:panelGrid>
 		</h:form>
 	</p:dialog>
 

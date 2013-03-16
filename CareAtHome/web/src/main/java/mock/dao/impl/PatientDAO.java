@@ -75,6 +75,7 @@ public class PatientDAO extends AbstractHibernateDAO<Long, Patient> implements I
 	
 	@Override
 	public Patient persist(Patient toPersist) {
+		toPersist.setUuid(patients.size()+1);
 		patients.add(toPersist);
 		return toPersist;
 	}

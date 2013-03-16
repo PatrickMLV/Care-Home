@@ -59,6 +59,7 @@ public class PatientManagerBean {
 	}
 	
 	public void updatePatient(){
+		
 		patientService.updatePatient(selectedPatient);
 	}
 	
@@ -66,5 +67,4 @@ public class PatientManagerBean {
 		patientService.deletePatient(selectedPatient);
 		selectedPatient = new Patient();
 	}
-	
 }

@@ -57,49 +57,95 @@
 		widgetVar="dlgAddPatient" modal="true">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText id="firstname" value="First name :" />
-				<p:inputText value="#{patientManagerBean.newPatient.firstName}" />
+				<h:panelGrid columns="2">
+					<h:outputText id="firstname" value="First name :" />
+					<p:inputText value="#{patientManagerBean.newPatient.firstName}" />
 
-				<h:outputText id="lastname" value="Last name :" />
-				<p:inputText value="#{patientManagerBean.newPatient.lastName}" />
+					<h:outputText id="lastname" value="Last name :" />
+					<p:inputText value="#{patientManagerBean.newPatient.lastName}" />
 
-				<h:outputText id="birthday" value="Birthday :" />
-				<p:inputText value="#{patientManagerBean.newPatient.birthday}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:inputText>
+					<h:outputText id="birthday" value="Birthday :" />
+					<p:inputText value="#{patientManagerBean.newPatient.birthday}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputText>
 
-				<h:outputText id="ssid" value="Ssid :" />
-				<p:inputText value="#{patientManagerBean.newPatient.ssid}" />
+					<h:outputText id="ssid" value="Ssid :" />
+					<p:inputText value="#{patientManagerBean.newPatient.ssid}" />
 
-				<h:outputText id="phone" value="Phone :" />
-				<p:inputText value="#{patientManagerBean.newPatient.phone}" />
+					<h:outputText id="phone" value="Phone :" />
+					<p:inputText value="#{patientManagerBean.newPatient.phone}" />
 
-				<h:outputText id="address" value="Address :" />
-				<p:inputText value="#{patientManagerBean.newPatient.address}" />
+					<h:outputText id="address" value="Address :" />
+					<p:inputText value="#{patientManagerBean.newPatient.address}" />
 
-				<h:outputText id="priority" value="Priority :" />
-				<p:inputText value="#{patientManagerBean.newPatient.priority}" />
+					<h:outputText id="priority" value="Priority :" />
+					<p:inputText value="#{patientManagerBean.newPatient.priority}" />
 
-				<h:outputText id="medecin" value="Medecin :" />
-				<p:selectOneMenu value="#{patientManagerBean.newPatient.medecin}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="medecinConverter" />
-					<f:selectItems value="#{medecinManagerBean.medecinList}"/>
-				</p:selectOneMenu>
-				
-				<h:outputText id="pharmacie" value="Pharmacie :" />
-				<p:selectOneMenu value="#{patientManagerBean.newPatient.pharmacie}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="pharmacieConverter" />
-					<f:selectItems value="#{pharmacieManagerBean.pharmacieList}"/>
-				</p:selectOneMenu>
-				
-				<h:outputText id="laboratory" value="Laboratory :" />
-				<p:selectOneMenu value="#{patientManagerBean.newPatient.laboratory}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="laboratoryConverter" />
-					<f:selectItems value="#{laboratoryManagerBean.laboratoryList}"/>
-				</p:selectOneMenu>
+					<h:outputText id="medecin" value="Medecin :" />
+					<p:selectOneMenu value="#{patientManagerBean.newPatient.medecin}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="medecinConverter" />
+						<f:selectItems value="#{medecinManagerBean.medecinList}" />
+					</p:selectOneMenu>
+
+					<h:outputText id="pharmacie" value="Pharmacie :" />
+					<p:selectOneMenu value="#{patientManagerBean.newPatient.pharmacie}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="pharmacieConverter" />
+						<f:selectItems value="#{pharmacieManagerBean.pharmacieList}" />
+					</p:selectOneMenu>
+
+					<h:outputText id="laboratory" value="Laboratory :" />
+					<p:selectOneMenu
+						value="#{patientManagerBean.newPatient.laboratory}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="laboratoryConverter" />
+						<f:selectItems value="#{laboratoryManagerBean.laboratoryList}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				<p:panelGrid columns="2">
+					<f:facet name="header">Disponibility</f:facet>
+					<h:outputText value="Monday" />
+					<p:selectOneRadio value="#{patientManagerBean.newPatient.monday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Tuesday" />
+					<p:selectOneRadio value="#{patientManagerBean.newPatient.tuesday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Wednesday" />
+					<p:selectOneRadio value="#{patientManagerBean.newPatient.wednesday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Thursday" />
+					<p:selectOneRadio value="#{patientManagerBean.newPatient.thursday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Friday" />
+					<p:selectOneRadio value="#{patientManagerBean.newPatient.friday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+				</p:panelGrid>
 			</h:panelGrid>
 			<h:panelGrid columns="2"
 				style="margin-left: auto;margin-right: auto;">
@@ -115,49 +161,98 @@
 		widgetVar="dlgUpdatePatient" modal="true">
 		<h:form>
 			<h:panelGrid columns="2">
-				<h:outputText id="firstname" value="First name :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.firstName}" />
+				<h:panelGrid columns="2">
+					<h:outputText id="firstname" value="First name :" />
+					<p:inputText
+						value="#{patientManagerBean.selectedPatient.firstName}" />
 
-				<h:outputText id="lastname" value="Last name :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.lastName}" />
+					<h:outputText id="lastname" value="Last name :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.lastName}" />
 
-				<h:outputText id="birthday" value="Birthday :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.birthday}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:inputText>
+					<h:outputText id="birthday" value="Birthday :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.birthday}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputText>
 
-				<h:outputText id="ssid" value="Ssid :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.ssid}" />
+					<h:outputText id="ssid" value="Ssid :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.ssid}" />
 
-				<h:outputText id="phone" value="Phone :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.phone}" />
+					<h:outputText id="phone" value="Phone :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.phone}" />
 
-				<h:outputText id="address" value="Address :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.address}" />
+					<h:outputText id="address" value="Address :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.address}" />
 
-				<h:outputText id="priority" value="Priority :" />
-				<p:inputText value="#{patientManagerBean.selectedPatient.priority}" />
-				
-				<h:outputText id="medecin" value="Medecin :" />
-				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.medecin}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="medecinConverter" />
-					<f:selectItems value="#{medecinManagerBean.medecinList}"/>
-				</p:selectOneMenu>
-				
-				<h:outputText id="pharmacie" value="Pharmacie :" />
-				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.pharmacie}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="pharmacieConverter" />
-					<f:selectItems value="#{pharmacieManagerBean.pharmacieList}"/>
-				</p:selectOneMenu>
-				
-				<h:outputText id="laboratory" value="Laboratory :" />
-				<p:selectOneMenu value="#{patientManagerBean.selectedPatient.laboratory}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:converter converterId="laboratoryConverter" />
-					<f:selectItems value="#{laboratoryManagerBean.laboratoryList}"/>
-				</p:selectOneMenu>
+					<h:outputText id="priority" value="Priority :" />
+					<p:inputText value="#{patientManagerBean.selectedPatient.priority}" />
+
+					<h:outputText id="medecin" value="Medecin :" />
+					<p:selectOneMenu
+						value="#{patientManagerBean.selectedPatient.medecin}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="medecinConverter" />
+						<f:selectItems value="#{medecinManagerBean.medecinList}" />
+					</p:selectOneMenu>
+
+					<h:outputText id="pharmacie" value="Pharmacie :" />
+					<p:selectOneMenu
+						value="#{patientManagerBean.selectedPatient.pharmacie}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="pharmacieConverter" />
+						<f:selectItems value="#{pharmacieManagerBean.pharmacieList}" />
+					</p:selectOneMenu>
+
+					<h:outputText id="laboratory" value="Laboratory :" />
+					<p:selectOneMenu
+						value="#{patientManagerBean.selectedPatient.laboratory}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:converter converterId="laboratoryConverter" />
+						<f:selectItems value="#{laboratoryManagerBean.laboratoryList}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				<p:panelGrid columns="2">
+					<f:facet name="header">Disponibility</f:facet>
+					<h:outputText value="Monday" />
+					<p:selectOneRadio value="#{patientManagerBean.selectedPatient.monday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Tuesday" />
+					<p:selectOneRadio value="#{patientManagerBean.selectedPatient.tuesday}">
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2"  />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3"  />
+					</p:selectOneRadio>
+					<h:outputText value="Wednesday" />
+					<p:selectOneRadio value="#{patientManagerBean.selectedPatient.wednesday}" >
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3"/>
+					</p:selectOneRadio>
+					<h:outputText value="Thursday" />
+					<p:selectOneRadio value="#{patientManagerBean.selectedPatient.thursday}">
+						<f:selectItem itemLabel="No" itemValue="-1"/>
+						<f:selectItem itemLabel="Morning - 1" itemValue="0"  />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+					<h:outputText value="Friday" />
+					<p:selectOneRadio value="#{patientManagerBean.selectedPatient.friday}" >
+						<f:selectItem itemLabel="No" itemValue="-1" />
+						<f:selectItem itemLabel="Morning - 1" itemValue="0" />
+						<f:selectItem itemLabel="Morning - 2" itemValue="1" />
+						<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
+						<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
+					</p:selectOneRadio>
+				</p:panelGrid>
 			</h:panelGrid>
 			<h:panelGrid columns="2"
 				style="margin-left: auto;margin-right: auto;">

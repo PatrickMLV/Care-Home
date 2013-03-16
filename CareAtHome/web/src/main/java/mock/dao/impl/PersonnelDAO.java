@@ -83,6 +83,7 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 	public Personnel persist(Personnel toPersist) {
 		//			// TODO Auto-generated method stub
 		//			return super.persist(toPersist);
+		toPersist.setUuid(personnels.size()+1);
 		personnels.add(toPersist);
 		return toPersist;
 	}
