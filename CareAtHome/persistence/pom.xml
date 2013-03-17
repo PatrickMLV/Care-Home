@@ -6,7 +6,9 @@
 		<artifactId>CareAtHome</artifactId>
 		<version>1.0.1</version>
 	</parent>
-	<artifactId>persistence</artifactId>
+
+    <groupId>fr.umlv.careAtHome.persistence</groupId>
+    <artifactId>persistence</artifactId>
 
 	<dependencies>
         <!-- Junit -->
