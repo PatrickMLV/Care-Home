@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence.services;
+package fr.umlv.careAtHome.services;
 
 import java.util.Date;
 

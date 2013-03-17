@@ -46,14 +46,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>fr.umlv.book</groupId>
-            <artifactId>umlv-dao</artifactId>
-            <version>1.0.1</version>
-            <classifier>tests</classifier>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

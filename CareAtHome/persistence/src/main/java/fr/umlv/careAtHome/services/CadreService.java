@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence.services;
+package fr.umlv.careAtHome.services;
 
 import fr.umlv.careAtHome.persistence.beans.Cadre;
 import fr.umlv.careAtHome.persistence.dao.ICadreDAO;

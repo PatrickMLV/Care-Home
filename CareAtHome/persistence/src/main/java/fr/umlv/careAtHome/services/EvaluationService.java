@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence.services;
+package fr.umlv.careAtHome.services;
 
 import java.util.Date;
 
@@ -19,14 +19,14 @@ public class EvaluationService {
 	/**
 	 * 
 	 * @param uuidEvaluator
-	 *            uuid de l'évaluateur
+	 *            uuid de l'ï¿½valuateur
 	 * @param uuidActor
-	 *            uuid de la personne évaluée
+	 *            uuid de la personne ï¿½valuï¿½e
 	 * @param evaluation
-	 *            texte d'évaluation
+	 *            texte d'ï¿½valuation
 	 * @param date
-	 *            date de l'évaluation
-	 * @return vrai si l'évaluation s'est bien passé, faux sinon
+	 *            date de l'ï¿½valuation
+	 * @return vrai si l'ï¿½valuation s'est bien passï¿½, faux sinon
 	 */
 	@Transactional()
 	public Evaluation setEvaluation(int uuidEvaluator, int uuidActor,

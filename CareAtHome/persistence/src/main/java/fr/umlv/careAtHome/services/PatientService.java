@@ -1,4 +1,4 @@
-package fr.umlv.careAtHome.persistence.services;
+package fr.umlv.careAtHome.services;
 
 import java.util.Date;
 import java.util.List;
@@ -87,4 +87,22 @@ public class PatientService {
 	public Patient findPatientByUuid(int uuid) {
 		return patientDAO.findPatientByUuid(uuid);
 	}
+
+
+    /*
+    0 = debut de matiné
+    1 = fin de matiné
+    2 = debut d'après midi
+    3 = fin d'après midi
+     */
+    @Transactional()
+    public static int[] createDisponibility(List<Integer> list) {
+        int[] disp = new int[7];
+
+        for (int i = 0; i < 7; i++) {
+            disp[i] = list.get(i);
+        }
+
+        return disp;
+    }
 }
