@@ -25,7 +25,7 @@ public class PatientService {
 	@Transactional()
 	public Patient addPatientFolder(String firstName, String lastName,
 			Date birthday, String ssid, String address, String phone,
-			String priority, int uuidMedecin, int uuidLaboratory,
+			int priority, int uuidMedecin, int uuidLaboratory,
 			int uuidPharmacie) {
 		Patient patient = new Patient();
 		patient.setAddress(address);
@@ -46,7 +46,7 @@ public class PatientService {
 	@Transactional()
 	public Patient modifyPatientFolder(int uuid, String firstName,
 			String lastName, Date birthday, String ssid, String address,
-			String phone, String priority, int uuidMedecin, int uuidLaboratory,
+			String phone, int priority, int uuidMedecin, int uuidLaboratory,
 			int uuidPharmacie) {
 		Patient patient = new Patient();
 		patient.setAddress(address);

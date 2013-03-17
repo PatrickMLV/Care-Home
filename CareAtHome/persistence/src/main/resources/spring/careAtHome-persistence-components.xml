@@ -13,8 +13,6 @@
        http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
 
 	<!-- Scans for application @Components to deploy -->
-	<import resource="careAtHome-persistence-components.xml" />
-
 	<context:component-scan base-package="fr.umlv.careAtHome.persistence" />
 
 </beans>
