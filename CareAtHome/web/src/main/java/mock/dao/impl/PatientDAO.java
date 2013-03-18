@@ -26,11 +26,11 @@ public class PatientDAO extends AbstractHibernateDAO<Long, Patient> implements I
 		List<Laboratory> laboratories = new LaboratoryDAO().findAll();
 		List<Pharmacie> pharmacies = new PharmacieDAO().findAll();
 			try {
-				patients.add(new Patient(1, "first1", "last1", sdf.parse("01/02/1990"), "ssid1", "address1", "phone1", "2", medecins.get(0), laboratories.get(0), pharmacies.get(0)));
-				patients.add(new Patient(2, "first2", "last2", sdf.parse("02/03/1990"), "ssid2", "address2", "phone2", "3", medecins.get(0), laboratories.get(0), pharmacies.get(0)));
-				patients.add(new Patient(3, "first3", "last3", sdf.parse("03/04/1990"), "ssid3", "address3", "phone3", "4", medecins.get(0), laboratories.get(0), pharmacies.get(0)));
-				patients.add(new Patient(4, "first4", "last4", sdf.parse("04/05/1990"), "ssid4", "address4", "phone4", "5", medecins.get(0), laboratories.get(0), pharmacies.get(0)));
-				patients.add(new Patient(5, "first5", "last5", sdf.parse("05/06/1990"), "ssid5", "address5", "phone5", "6", medecins.get(0), laboratories.get(0), pharmacies.get(0)));
+				patients.add(new Patient(1, "first1", "last1", sdf.parse("01/02/1990"), "ssid1", "address1", "phone1", 2, medecins.get(0), laboratories.get(0), pharmacies.get(0)));
+				patients.add(new Patient(2, "first2", "last2", sdf.parse("02/03/1990"), "ssid2", "address2", "phone2", 3, medecins.get(0), laboratories.get(0), pharmacies.get(0)));
+				patients.add(new Patient(3, "first3", "last3", sdf.parse("03/04/1990"), "ssid3", "address3", "phone3", 4, medecins.get(0), laboratories.get(0), pharmacies.get(0)));
+				patients.add(new Patient(4, "first4", "last4", sdf.parse("04/05/1990"), "ssid4", "address4", "phone4", 5, medecins.get(0), laboratories.get(0), pharmacies.get(0)));
+				patients.add(new Patient(5, "first5", "last5", sdf.parse("05/06/1990"), "ssid5", "address5", "phone5", 6, medecins.get(0), laboratories.get(0), pharmacies.get(0)));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

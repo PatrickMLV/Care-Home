@@ -10,8 +10,8 @@
         <version>1.0.1</version>
     </parent>
 
-    <groupId>fr.umlv.careAtHome.persistence</groupId>
-    <artifactId>persistence</artifactId>
+    <groupId>fr.umlv.careAtHome.persistence2</groupId>
+    <artifactId>persistence2</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1</version>
 

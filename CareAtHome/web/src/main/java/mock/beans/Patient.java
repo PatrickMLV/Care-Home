@@ -38,7 +38,7 @@ public class Patient extends Actor  {
     private String phone;
     
     @Column(name = "PRIORITY")
-    private String priority;
+    private int priority;
     
     private int monday = -1;
     private int tuesday = -1;
@@ -62,7 +62,7 @@ public class Patient extends Actor  {
 	}
 
 	public Patient(int uuid, String firstName, String lastName, Date birthday,
-			String ssid, String address, String phone, String priority,
+			String ssid, String address, String phone, int priority,
 			Medecin medecin, Laboratory laboratory, Pharmacie pharmacie) {
 		super();
 		this.uuid = uuid;
@@ -134,11 +134,11 @@ public class Patient extends Actor  {
 		this.phone = phone;
 	}
 
-	public String getPriority() {
+	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(String priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 

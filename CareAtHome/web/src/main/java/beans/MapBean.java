@@ -13,6 +13,10 @@ import javax.inject.Named;
 
 import mock.beans.Patient;
 
+import mock.beans.Personnel;
+import mock.dao.IPersonnelDAO;
+import mock.dao.impl.PersonnelDAO;
+import mock.services.generation.Generation;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -43,8 +47,9 @@ public class MapBean implements Serializable {
 	private double maxLon = 0;
 	private double zoom = 13;
 	private List<Patient> users = new ArrayList<Patient>();
+    private int uuid;
 
-	public List<Patient> getUsers() {
+    public List<Patient> getUsers() {
 		return users;
 	}
 
@@ -60,23 +65,13 @@ public class MapBean implements Serializable {
 		return zoom;
 	}
 
-	public MapBean() {
-		users.add(new Patient(15, "Fac", "MLV", new Date(), "alalala",
-				"Copernic 5 Boulevard Descartes, 77454 Champs-sur-Marne",
-				 "0606060606","1AP", null, null, null));
-		users.add(new Patient(
-				16,
-				"Aerodrome",
-				"Lognes",
-				new Date(),
-				"alalala",
-				"Aerodrome de Lognes-Emerainville, Boulevard de Courcerin Lognes",
-				 "0707070707","1AP", null, null, null));
-		users.add(new Patient(17, "Ecole", "Esiee", new Date(), "alalala",
-				"2 Boulevard Blaise Pascal 93162 Noisy-le-Grand Esiee", 
-				"0808080808","1AP", null, null, null));
+    public void init(int userUuid) {
+        IPersonnelDAO personnelDAO = new PersonnelDAO();
+        users.addAll(Generation.generateAll().get(personnelDAO.getcaregiverByUuid(userUuid)));
+    }
 
-		simpleModel = new DefaultMapModel();
+	public MapBean() {
+        simpleModel = new DefaultMapModel();
 
 		final Geocoder geocoder = new Geocoder();
 		GeocoderRequest geocoderRequest = null;
