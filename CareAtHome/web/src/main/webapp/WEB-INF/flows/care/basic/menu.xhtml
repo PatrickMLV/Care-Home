@@ -8,32 +8,49 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <style type="text/css">
-        body {
-            background-color: #d2caec;
-        }
-    </style>
+	<style type="text/css">
+body {
+	background-color: #88aaaa;
+}
+
+.icon-staff {
+	background-image: url("/resources/images/staff.png") !important;
+}
+.icon-patient {
+	background-image: url("/resources/images/patient.png") !important;
+}
+.icon-circuit {
+	background-image: url("/resources/images/circuit.png") !important;
+}
+.icon-medecin {
+	background-image: url("/resources/images/doctor.png") !important;
+}
+.icon-pharmacy {
+	background-image: url("/resources/images/pharmacy.png") !important;
+}
+.icon-laboratory {
+	background-image: url("/resources/images/laboratory.png") !important;
+}
+</style>
 </h:head>
 <h:body>
 	<h:form>
 		<p:growl id="messages" />
 		<p:menu>
 			<p:submenu label="Patient">
-            	<p:menuitem value="Consult" action="goToConsultPatient" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            </p:submenu>
-            <p:submenu label="Staff">
-            	<p:menuitem value="Consult" action="goToConsultStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Circuit" action="goToCircuitStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Day Off" action="goToDayOffStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            </p:submenu>
-            <p:submenu label="Admin">
-            	<p:menuitem value="Manage Patient" action="goToManagePatient" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Manage Medecin" action="goToManageMedecin" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Manage Pharmacy" action="goToManagePharmacie" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Manage Laboratory" action="goToManageLaboratory" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Manage Staff" action="goToManageStaff" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            	<p:menuitem value="Evaluation" action="goToEvaluation" update="messages" ajax="false" icon="ui-icon-circle-triangle-e"/>
-            </p:submenu>
+				<p:menuitem value="Consult" action="goToConsultPatient" update="messages" ajax="false" icon="icon-patient" />
+			</p:submenu>
+			<p:submenu label="Staff">
+				<p:menuitem value="Consult" action="goToConsultStaff" update="messages" ajax="false" icon="icon-staff" />
+				<p:menuitem value="Circuit" action="goToCircuitStaff" update="messages" ajax="false" icon="icon-circuit" />
+			</p:submenu>
+			<p:submenu label="Admin">
+				<p:menuitem value="Manage Patient" action="goToManagePatient" update="messages" ajax="false" icon="icon-patient" />
+				<p:menuitem value="Manage Medecin" action="goToManageMedecin" update="messages" ajax="false" icon="icon-medecin" />
+				<p:menuitem value="Manage Pharmacy" action="goToManagePharmacie" update="messages" ajax="false" icon="icon-pharmacy" />
+				<p:menuitem value="Manage Laboratory" action="goToManageLaboratory" update="messages" ajax="false" icon="icon-laboratory" />
+				<p:menuitem value="Manage Staff" action="goToManageStaff" update="messages" ajax="false" icon="icon-staff" />
+			</p:submenu>
 		</p:menu>
 	</h:form>
 </h:body>

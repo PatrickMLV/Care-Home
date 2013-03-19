@@ -3,8 +3,12 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
-	
-	
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>cupertino</param-value>
+	</context-param>
+
 	<!-- Spring -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -13,7 +17,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-	
+
 	<!-- Spring Security -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
@@ -28,12 +32,12 @@
 		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
 		<!-- <url-pattern>/*</url-pattern> -->
 	</filter-mapping>
-	
+
 	<!-- JSF -->
-    <context-param>
-        <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/WEB-INF/faces-config.xml</param-value>
-    </context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param>
 	<context-param>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
 		<param-value>.xhtml</param-value>
@@ -46,31 +50,25 @@
 		<param-name>org.richfaces.SKIN</param-name>
 		<param-value>web</param-value>
 	</context-param>
-  	<context-param>
-  		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
-  		<param-value>/WEB-INF/springsecurity.taglib.xml</param-value>
-  	</context-param>
-    <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+	<context-param>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+		<param-value>/WEB-INF/springsecurity.taglib.xml</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.faces</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Resources -->
-	<!-- <servlet>
-		<servlet-name>Resources Servlet</servlet-name>
-		<servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
-		<load-on-startup>0</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Resources Servlet</servlet-name>
-		<url-pattern>/resources/*</url-pattern>
-	</servlet-mapping> -->
-	
+	<!-- <servlet> <servlet-name>Resources Servlet</servlet-name> <servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class> 
+		<load-on-startup>0</load-on-startup> </servlet> <servlet-mapping> <servlet-name>Resources 
+		Servlet</servlet-name> <url-pattern>/resources/*</url-pattern> </servlet-mapping> -->
+
 	<!-- Spring MVC -->
 	<servlet>
 		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
@@ -85,29 +83,16 @@
 		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
 		<url-pattern>/flow/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Encoding -->
-	<!-- <filter>
-		<filter-name>charEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>charEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-	
+	<!-- <filter> <filter-name>charEncodingFilter</filter-name> <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
+		<init-param> <param-name>encoding</param-name> <param-value>UTF-8</param-value> 
+		</init-param> <init-param> <param-name>forceEncoding</param-name> <param-value>true</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>charEncodingFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
 	<!-- Conf -->
-	<!-- <session-config>
-		<session-timeout>30</session-timeout>
-	</session-config> -->
+	<!-- <session-config> <session-timeout>30</session-timeout> </session-config> -->
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

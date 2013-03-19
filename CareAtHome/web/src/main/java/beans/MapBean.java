@@ -67,7 +67,10 @@ public class MapBean implements Serializable {
 
     public void init(int userUuid) {
         IPersonnelDAO personnelDAO = new PersonnelDAO();
-        users.addAll(Generation.generateAll().get(personnelDAO.getcaregiverByUuid(userUuid)));
+        List<Patient> patients = Generation.generateAll().get(personnelDAO.getcaregiverByUuid(userUuid));
+        if (patients != null){
+        	users.addAll(patients);
+        }
     }
 
 	public MapBean() {

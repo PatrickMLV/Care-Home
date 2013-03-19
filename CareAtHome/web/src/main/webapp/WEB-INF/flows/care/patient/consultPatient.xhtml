@@ -28,7 +28,8 @@
 					rows="10" selection="#{patientManagerBean.selectedPatient}"
 					selectionMode="single">
 
-					<p:ajax event="rowSelect" update=":modalConsultPatient, :modalConsultPatientDisp"
+					<p:ajax event="rowSelect"
+						update=":modalConsultPatient"
 						oncomplete="dlgConsultPatient.show();" />
 
 					<f:facet name="header">Patient List</f:facet>
@@ -45,147 +46,133 @@
 	<p:dialog id="modalConsultPatient" header="Patient Information"
 		widgetVar="dlgConsultPatient" modal="true">
 		<h:form>
-			<p:panelGrid columns="2">
-				<p:panelGrid columns="2">
-					<f:facet name="header">Your informations</f:facet>
-					<h:outputText value="First name " />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.firstName}" />
-					<h:outputText value="Last name " />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.lastName}" />
-					<h:outputText value="Birthday " />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.birthday}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-					<h:outputText value="SSID " />
-					<h:outputText value="#{patientManagerBean.selectedPatient.ssid}" />
-					<h:outputText value="Phone " />
-					<h:outputText value="#{patientManagerBean.selectedPatient.phone}" />
-					<h:outputText value="Address " />
-					<h:outputText value="#{patientManagerBean.selectedPatient.address}" />
-					<h:outputText value="Priority " />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.priority}" />
-				</p:panelGrid>
-				<p:panelGrid columns="2">
-					<f:facet name="header">Medecin</f:facet>
-					<h:outputText value="First name" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.firstName}" />
-					<h:outputText value="Last name" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.lastName}" />
-					<h:outputText value="Birthday" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.birthday}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-					<h:outputText value="SSID" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.ssid}" />
-					<h:outputText value="Phone" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.phone}" />
-					<h:outputText value="Address" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.medecin.adress}" />
-				</p:panelGrid>
-				<p:panelGrid columns="2">
-					<f:facet name="header">Laboratory</f:facet>
-					<h:outputText value="Name" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.laboratory.name}" />
-					<h:outputText value="Phone" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.laboratory.phone}" />
-					<h:outputText value="Address" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.laboratory.adress}" />
-				</p:panelGrid>
-				<p:panelGrid columns="2">
-					<f:facet name="header">Pharmacie</f:facet>
-					<h:outputText value="Name" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.pharmacie.name}" />
-					<h:outputText value="Phone" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.pharmacie.phone}" />
-					<h:outputText value="Address" />
-					<h:outputText
-						value="#{patientManagerBean.selectedPatient.pharmacie.adress}" />
-				</p:panelGrid>
-			</p:panelGrid>
-			<p:panelGrid columns="1"
-				style="margin-left: auto;margin-right: auto;">
-				<p:commandButton value="Disponibility"
-					onclick="dlgConsultPatientDisp.show();" type="button" />
-			</p:panelGrid>
-			<p:panelGrid columns="1"
-				style="margin-left: auto;margin-right: auto;">
-				<p:commandButton value="Ok" onclick="dlgConsultPatient.hide();"
-					type="button" />
-			</p:panelGrid>
-		</h:form>
-	</p:dialog>
 
-	<p:dialog id="modalConsultPatientDisp" header="Patient Information"
-		widgetVar="dlgConsultPatientDisp" modal="true">
-		<h:form>
-			<p:panelGrid columns="2">
-				<f:facet name="header">Disponibility</f:facet>
-				<h:outputText value="Monday" />
-				<p:selectOneRadio
-					value="#{patientManagerBean.selectedPatient.monday}">
-					<f:selectItem itemLabel="No" itemValue="-1" />
-					<f:selectItem itemLabel="Morning - 1" itemValue="0" />
-					<f:selectItem itemLabel="Morning - 2" itemValue="1" />
-					<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
-					<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
-				</p:selectOneRadio>
-				<h:outputText value="Tuesday" />
-				<p:selectOneRadio
-					value="#{patientManagerBean.selectedPatient.tuesday}">
-					<f:selectItem itemLabel="No" itemValue="-1" />
-					<f:selectItem itemLabel="Morning - 1" itemValue="0" />
-					<f:selectItem itemLabel="Morning - 2" itemValue="1" />
-					<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
-					<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
-				</p:selectOneRadio>
-				<h:outputText value="Wednesday" />
-				<p:selectOneRadio
-					value="#{patientManagerBean.selectedPatient.wednesday}">
-					<f:selectItem itemLabel="No" itemValue="-1" />
-					<f:selectItem itemLabel="Morning - 1" itemValue="0" />
-					<f:selectItem itemLabel="Morning - 2" itemValue="1" />
-					<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
-					<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
-				</p:selectOneRadio>
-				<h:outputText value="Thursday" />
-				<p:selectOneRadio
-					value="#{patientManagerBean.selectedPatient.thursday}">
-					<f:selectItem itemLabel="No" itemValue="-1" />
-					<f:selectItem itemLabel="Morning - 1" itemValue="0" />
-					<f:selectItem itemLabel="Morning - 2" itemValue="1" />
-					<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
-					<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
-				</p:selectOneRadio>
-				<h:outputText value="Friday" />
-				<p:selectOneRadio
-					value="#{patientManagerBean.selectedPatient.friday}">
-					<f:selectItem itemLabel="No" itemValue="-1" />
-					<f:selectItem itemLabel="Morning - 1" itemValue="0" />
-					<f:selectItem itemLabel="Morning - 2" itemValue="1" />
-					<f:selectItem itemLabel="Afternoon - 1" itemValue="2" />
-					<f:selectItem itemLabel="Afternoon - 2" itemValue="3" />
-				</p:selectOneRadio>
-			</p:panelGrid>
-			<p:panelGrid columns="1"
-				style="margin-left: auto;margin-right: auto;">
-				<p:commandButton value="Ok"
-					onclick="dlgConsultPatientDisp.hide();" type="button" />
-			</p:panelGrid>
+			<p:tabView orientation="left">
+				<p:tab title="Patient informations">
+					<p:panelGrid columns="2">
+						<h:outputText value="First name " />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.firstName}" />
+						<h:outputText value="Last name " />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.lastName}" />
+						<h:outputText value="Birthday " />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.birthday}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+						<h:outputText value="SSID " />
+						<h:outputText value="#{patientManagerBean.selectedPatient.ssid}" />
+						<h:outputText value="Phone " />
+						<h:outputText value="#{patientManagerBean.selectedPatient.phone}" />
+						<h:outputText value="Address " />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.address}" />
+						<h:outputText value="Priority " />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.priority}" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Your Doctor">
+					<p:panelGrid columns="2">
+						<h:outputText value="First name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.firstName}" />
+						<h:outputText value="Last name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.lastName}" />
+						<h:outputText value="Birthday" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.birthday}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+						<h:outputText value="SSID" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.ssid}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.medecin.adress}" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Your Laboratory">
+					<p:panelGrid columns="2">
+						<h:outputText value="Name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.name}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.laboratory.adress}" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Your Pharmacy">
+					<p:panelGrid columns="2">
+						<h:outputText value="Name" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.name}" />
+						<h:outputText value="Phone" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.phone}" />
+						<h:outputText value="Address" />
+						<h:outputText
+							value="#{patientManagerBean.selectedPatient.pharmacie.adress}" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Your Disponibility">
+					<p:panelGrid columns="2">
+						<h:outputText value="Monday" />
+						<p:selectOneRadio
+							value="#{patientManagerBean.selectedPatient.monday}">
+							<f:selectItem itemLabel="No" itemValue="-1" />
+							<f:selectItem itemLabel="From 8h" itemValue="0" />
+							<f:selectItem itemLabel="From 10h" itemValue="1" />
+							<f:selectItem itemLabel="From 14h" itemValue="2" />
+							<f:selectItem itemLabel="From 16h" itemValue="3" />
+						</p:selectOneRadio>
+						<h:outputText value="Tuesday" />
+						<p:selectOneRadio
+							value="#{patientManagerBean.selectedPatient.tuesday}">
+							<f:selectItem itemLabel="No" itemValue="-1" />
+							<f:selectItem itemLabel="From 8h" itemValue="0" />
+							<f:selectItem itemLabel="From 10h" itemValue="1" />
+							<f:selectItem itemLabel="From 14h" itemValue="2" />
+							<f:selectItem itemLabel="From 16h" itemValue="3" />
+						</p:selectOneRadio>
+						<h:outputText value="Wednesday" />
+						<p:selectOneRadio
+							value="#{patientManagerBean.selectedPatient.wednesday}">
+							<f:selectItem itemLabel="No" itemValue="-1" />
+							<f:selectItem itemLabel="From 8h" itemValue="0" />
+							<f:selectItem itemLabel="From 10h" itemValue="1" />
+							<f:selectItem itemLabel="From 14h" itemValue="2" />
+							<f:selectItem itemLabel="From 16h" itemValue="3" />
+						</p:selectOneRadio>
+						<h:outputText value="Thursday" />
+						<p:selectOneRadio
+							value="#{patientManagerBean.selectedPatient.thursday}">
+							<f:selectItem itemLabel="No" itemValue="-1" />
+							<f:selectItem itemLabel="From 8h" itemValue="0" />
+							<f:selectItem itemLabel="From 10h" itemValue="1" />
+							<f:selectItem itemLabel="From 14h" itemValue="2" />
+							<f:selectItem itemLabel="From 16h" itemValue="3" />
+						</p:selectOneRadio>
+						<h:outputText value="Friday" />
+						<p:selectOneRadio
+							value="#{patientManagerBean.selectedPatient.friday}">
+							<f:selectItem itemLabel="No" itemValue="-1" />
+							<f:selectItem itemLabel="From 8h" itemValue="0" />
+							<f:selectItem itemLabel="From 10h" itemValue="1" />
+							<f:selectItem itemLabel="From 14h" itemValue="2" />
+							<f:selectItem itemLabel="From 16h" itemValue="3" />
+						</p:selectOneRadio>
+					</p:panelGrid>
+				</p:tab>
+			</p:tabView>
 		</h:form>
 	</p:dialog>
 

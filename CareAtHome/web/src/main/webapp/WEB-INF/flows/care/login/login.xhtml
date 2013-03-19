@@ -2,68 +2,82 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-    <style type="text/css">
-        body {
-            background-color: #d2caec;
-        }
+	<style type="text/css">
+body {
+	background: -webkit-radial-gradient(50% 75%, ellipse closest-side, #FFFFFF, #88aaaa 100%);
+}
 
-        .center {
-            text-align: center;
-        }
+.center {
+	text-align: center;
+}
 
-        #loginForm {
-            margin-top: 100px;
-            margin-left : auto;
-            margin-right: auto;
-            width: 350px;
-            margin-left: auto;
-        }
+.title {
+	font-size: 60px;
+	font-style: italic;
+}
 
-        #commandButtonLogin {
-            margin-left: auto;
-            margin-right: auto;
-            width: 110px;
-        }
-    </style>
+#loginForm {
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 350px;
+	margin-left: auto;
+}
 
-    <h:head>
-        <title>Connexion | Care@Home</title>
-    </h:head>
+#commandButtonLogin {
+	margin-left: auto;
+	margin-right: auto;
+	width: 110px;
+}
+</style>
 
-    <h:body>
-        <h2 class="center">Care@Home</h2>
+	<h:head>
+		<title>Connexion | Care@Home</title>
+	</h:head>
 
-        <div id="loginForm">
-            <f:view>
-                <h:form>
-                	<p:messages />
-                    <p:panelGrid columns="2" styleClass="center" style="width:350px;">
-                        <f:facet name="header">
+	<h:body>
+
+
+
+		<div id="loginForm">
+			<f:view>
+				<h:panelGrid columns="1"
+					style="margin-left:auto; margin-right:auto; text-align:center;">
+					<h:graphicImage url="/resources/images/logo.png" height="75px" />
+					<h2 class="title">Care@Home</h2>
+
+				</h:panelGrid>
+
+				<h:form>
+					<p:messages />
+					<p:panelGrid columns="2" styleClass="center" style="width:350px;">
+						<f:facet name="header">
                             Login
                         </f:facet>
-                        <h:outputLabel for="login" value="Login:" />
-                        <p:inputText id="login" value="#{loginBean.login}" label="Login" />
+						<h:outputLabel for="login" value="Login:" />
+						<p:inputText id="login" value="#{loginBean.login}" label="Login" />
 
-                        <h:outputLabel for="password" value="Password:" />
-                        <p:password id="password" value="#{loginBean.password}" label="Password" />
+						<h:outputLabel for="password" value="Password:" />
+						<p:password id="password" value="#{loginBean.password}"
+							label="Password" />
 
-                        <f:facet name="footer">
-                            <div id="commandButtonLogin">
-                                <h:commandButton value="Connexion" action="authentification"
-                                                 style="width:150px;"/>
-                            </div>
-                        </f:facet>
-                    </p:panelGrid>
-                    
-                </h:form>
-            </f:view>
-        </div>
-        <br />
-    </h:body>
+						<f:facet name="footer">
+							<div id="commandButtonLogin">
+								<h:commandButton value="Connexion" action="authentification"
+									style="width:150px;" />
+							</div>
+						</f:facet>
+					</p:panelGrid>
+
+				</h:form>
+			</f:view>
+		</div>
+		<br />
+	</h:body>
 
 </ui:composition>

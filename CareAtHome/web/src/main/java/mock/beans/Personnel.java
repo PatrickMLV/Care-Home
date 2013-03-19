@@ -36,7 +36,7 @@ public class Personnel extends Actor {
 	private String referant;
 
 	public Personnel(int uuid, String firstName, String lastName, Date birthday,
-			String ssid, String phone, String referant) {
+			String ssid, String phone, String referant, String login, String password) {
 		this.uuid = uuid;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,6 +44,8 @@ public class Personnel extends Actor {
 		this.ssid = ssid;
 		this.referant = referant;
 		this.phone = phone;
+		super.setLogin(login);
+		super.setPassword(password);
 	}
 
 	public Personnel() {

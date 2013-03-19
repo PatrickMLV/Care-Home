@@ -3,11 +3,10 @@ package mock.dao.impl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-import javax.persistence.Query;
-
-import mock.beans.Patient;
 import mock.beans.Personnel;
 import mock.dao.IPersonnelDAO;
 
@@ -23,19 +22,14 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 	public PersonnelDAO(){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try {
-			personnels.add(new Personnel(1, "personnel", "1", sdf.parse("02/03/1990"), "ssid1", "phone1", "referant1"));
-			personnels.add(new Personnel(2, "personnel", "2", sdf.parse("03/04/1990"), "ssid2", "phone2", "referant2"));
+			personnels.add(new Personnel(1, "Angely", "Catherine", sdf.parse("22/10/1986"), "2 86 10 75 068 579 10", "06 43 52 39 46", "Heaume Chantal", "acatherine", "acatherine"));
+			personnels.add(new Personnel(2, "Dahan", "Georges", sdf.parse("16/04/1981"), "1 81 04 75 142 442 75", "06 28 68 92 01", "Maes Yunsan", "dgeorges", "dgeorges"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Personnel> searchcaregiverByName(String firstName) {
-		//		Query query = createQuery("SELECT a FROM Personnel a WHERE a.firstname =:firstname");
-		//		return (List<Personnel>) query.getResultList();
-
-
 		List<Personnel> result = new ArrayList<Personnel>();
 		for (Personnel personnel : personnels){
 			if (personnel.getFirstName().startsWith(firstName)){
@@ -47,10 +41,6 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 
 	@Override
 	public Personnel getcaregiverByUuid(int uuid) {
-		//		Query query = createQuery("SELECT a FROM Personnel a where a.uuid =:uuid");
-		//		query.setParameter("uuid", uuid);
-		//		return (Personnel) query.getSingleResult();
-
 		for (Personnel personnel : personnels){
 			if (personnel.getUuid() == uuid){
 				return personnel;
@@ -61,15 +51,6 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 
 	@Override
 	public List<Personnel> getcaregiverByUuids(List<Integer> uuids) {
-		//		List<Personnel> personnels = new ArrayList<Personnel>();
-		//		Query query = createQuery("SELECT a FROM Personnel a where a.uuid =:uuid");
-		//		
-		//		for (int uuid : uuids) {
-		//			query.setParameter("uuid", uuid);
-		//			personnels.add((Personnel) query.getSingleResult());
-		//		}
-		//		return personnels;
-
 		List<Personnel> result = new ArrayList<Personnel>();
 		for (Personnel personnel : personnels){
 			if (uuids.contains(personnel.getUuid())){
@@ -81,8 +62,6 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 
 	@Override
 	public Personnel persist(Personnel toPersist) {
-		//			// TODO Auto-generated method stub
-		//			return super.persist(toPersist);
 		toPersist.setUuid(personnels.size()+1);
 		personnels.add(toPersist);
 		return toPersist;
@@ -90,8 +69,6 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 	
 	@Override
 	public Personnel merge(Personnel toMerge) {
-//		// TODO Auto-generated method stub
-//		return super.merge(toMerge);
 		for (Personnel personnel : personnels){
 			if (personnel.getUuid() == toMerge.getUuid()){
 				personnels.remove(personnel);
@@ -104,9 +81,6 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 	
 	@Override
 	public void remove(Personnel toRemove) {
-//		// TODO Auto-generated method stub
-//		super.remove(toRemove);
-		
 		for (Personnel personnel : personnels){
 			if (personnel.getUuid() == toRemove.getUuid()){
 				personnels.remove(personnel);
@@ -116,6 +90,13 @@ public class PersonnelDAO extends AbstractHibernateDAO<Long, Personnel> implemen
 	}
 	@Override
 	public List<Personnel> getAllPersonnel() {
+		Collections.sort(personnels, new Comparator<Personnel>() {
+
+			@Override
+			public int compare(Personnel o1, Personnel o2) {
+				return o1.getFirstName().compareTo(o2.getFirstName());
+			}
+		});
 		return personnels;
 	}
 

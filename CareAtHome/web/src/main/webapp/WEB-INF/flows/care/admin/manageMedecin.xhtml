@@ -60,19 +60,19 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="First name :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.firstName}" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.firstName}" size="40"/>
 				<h:outputText value="Last name :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.lastName}" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.lastName}" size="40"/>
 				<h:outputText value="Birthday :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.birthday}">
+				<p:inputText value="#{medecinManagerBean.newMedecin.birthday}" size="40">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</p:inputText>
 				<h:outputText value="SSID :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.ssid}" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.ssid}" size="40"/>
 				<h:outputText value="Phone :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.phone}" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.phone}" size="40"/>
 				<h:outputText value="Address :" />
-				<p:inputText value="#{medecinManagerBean.newMedecin.adress}" />
+				<p:inputText value="#{medecinManagerBean.newMedecin.adress}" size="40"/>
 			</h:panelGrid>
 			<h:panelGrid columns="2"
 				style="margin-left: auto;margin-right: auto;">
