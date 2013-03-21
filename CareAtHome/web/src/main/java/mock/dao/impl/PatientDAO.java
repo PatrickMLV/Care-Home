@@ -41,6 +41,7 @@ public class PatientDAO extends AbstractHibernateDAO<Long, Patient> implements I
 			Patient patient3 = new Patient(3, "Bernard", "Eric", sdf.parse("11/04/1976"), "1 76 04 75 879 586 13", "12 Boulevard des Capucines, 75009 Paris", "01 43 30 03 56", 4, medecins.get(2), laboratories.get(2), pharmacies.get(2));
 			patient3.setTuesday(2);
 			patient3.setWednesday(1);
+			patient3.setThursday(2);
 			patient3.setFriday(1);
 			patients.add(patient3);
 			

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +34,6 @@ public class Generation {
         HashMap<Personnel, List<Patient>> map = new HashMap<Personnel, List<Patient>>();
 
         patients = sortPatients(day, patients);
-
         for (int i = 0; i < patients.size(); i++) {
             Personnel staff = staffs.get(i % staffs.size());
             List<Patient> list = map.get(staff);
@@ -55,8 +53,7 @@ public class Generation {
         ArrayList<Patient> bA = new ArrayList<Patient>();
         ArrayList<Patient> eA = new ArrayList<Patient>();
 
-        int disp;
-
+        int disp = 5;
         for (Patient patient: patients) {
             switch (day) {
                 case Calendar.MONDAY:
@@ -75,7 +72,7 @@ public class Generation {
                     disp = patient.getFriday();
                     break;
                 default:
-                    throw new UnsupportedOperationException("Saturday and Sunday are not supported.");
+                	throw new UnsupportedOperationException("Saturday and Sunday are not supported.");
             }
             switch (disp) {
                 case 0:
@@ -97,7 +94,6 @@ public class Generation {
         sortByPriority(eM);
         sortByPriority(bA);
         sortByPriority(eA);
-
 
         ArrayList<Patient> ret = new ArrayList<Patient>();
         ret.addAll(bM);

@@ -69,6 +69,7 @@ public class MapBean implements Serializable {
 	public void init(int userUuid) {
 
 		simpleModel = new DefaultMapModel();
+		users = new ArrayList<Patient>();
 
 		Map<Personnel, List<Patient>> map = Generation.generateAll();
 		Set<Personnel> cles = map.keySet();
@@ -82,25 +83,10 @@ public class MapBean implements Serializable {
 			 * Si l'id du personnel est le même que l'id du staff en cours on traite l'information
 			 */
 			if (cle.getUuid() == userUuid){
-				/*
-				 * Si la liste n'est pas vide on vérifie que l'on a pas déjà ajouter le patient dedans
-				 */
-				if(users.size() != 0){
 					/*
-					 * On récupère la liste des patients triée
+					 * On ajoute la liste des patients
 					 */
-					for (Patient p : map.get(cle)) {
-						
-							for (Patient patient : users) {
-								if (patient.getUuid() != p.getUuid()){
-									users.add(p);
-								}
-						}
-					}
-				}else{ //Sinon on ajoute la liste de patient
 					users.addAll(map.get(cle));
-				}
-				
 			}
 		}
 
