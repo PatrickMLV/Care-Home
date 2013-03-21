@@ -15,8 +15,6 @@ import javax.inject.Named;
 
 import mock.beans.Patient;
 import mock.beans.Personnel;
-import mock.dao.IPersonnelDAO;
-import mock.dao.impl.PersonnelDAO;
 import mock.services.generation.Generation;
 
 import org.primefaces.event.map.OverlaySelectEvent;
@@ -66,12 +64,12 @@ public class MapBean implements Serializable {
 		return zoom;
 	}
 
-	public void init(int userUuid) {
+	public void init(int userUuid, List<Personnel> personnels, List<Patient> patients) {
 
 		simpleModel = new DefaultMapModel();
 		users = new ArrayList<Patient>();
 
-		Map<Personnel, List<Patient>> map = Generation.generateAll();
+		Map<Personnel, List<Patient>> map = Generation.generateAll(personnels, patients);
 		Set<Personnel> cles = map.keySet();
 		Iterator<Personnel> it = cles.iterator();     	
 		/*

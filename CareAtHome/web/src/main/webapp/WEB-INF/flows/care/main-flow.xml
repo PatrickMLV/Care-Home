@@ -67,7 +67,7 @@
 	
 	<view-state id="circuitStaff" view="staff/circuit.xhtml">
         <on-entry>
-            <evaluate expression="mapBean.init(loginBean.user.uuid)"></evaluate>
+            <evaluate expression="mapBean.init(loginBean.user.uuid, staffManagerBean.staffList, patientManagerBean.patientList)"></evaluate>
         </on-entry>
         <transition on="logout" to="login" />
 		<transition on="goToConsultPatient" to="consultPatient" />

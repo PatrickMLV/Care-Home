@@ -10,18 +10,23 @@ import java.util.Map;
 
 import mock.beans.Patient;
 import mock.beans.Personnel;
-import mock.dao.IPatientDAO;
-import mock.dao.IPersonnelDAO;
-import mock.dao.impl.PatientDAO;
-import mock.dao.impl.PersonnelDAO;
 
 public class Generation {
 
-    public static Map<Personnel, List<Patient>> generateAll() {
+    public static Map<Personnel, List<Patient>> generateAll(List<Personnel> personnels, List<Patient> patients) {
         int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-        IPatientDAO iPatientDAO = new PatientDAO();
-        IPersonnelDAO iPersonnelDAO = new PersonnelDAO();
-        return generate(day, iPersonnelDAO.getAllPersonnel(), iPatientDAO.getAllPatient());
+        
+        System.out.println("GENERATION");
+        System.out.println("PERSONNEL");
+        for (Personnel personnel : personnels){
+        	System.out.println(personnel.getFirstName()+" "+personnel.getLastName());
+        }
+        System.out.println();
+        System.out.println("PATIENT");
+        for (Patient patient : patients){
+        	System.out.println(patient.getFirstName()+" "+patient.getLastName());
+        }
+        return generate(day, personnels, patients);
     }
 
     // day : 0 = monday, ...
