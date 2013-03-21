@@ -14,18 +14,7 @@ import mock.beans.Personnel;
 public class Generation {
 
     public static Map<Personnel, List<Patient>> generateAll(List<Personnel> personnels, List<Patient> patients) {
-        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-        
-        System.out.println("GENERATION");
-        System.out.println("PERSONNEL");
-        for (Personnel personnel : personnels){
-        	System.out.println(personnel.getFirstName()+" "+personnel.getLastName());
-        }
-        System.out.println();
-        System.out.println("PATIENT");
-        for (Patient patient : patients){
-        	System.out.println(patient.getFirstName()+" "+patient.getLastName());
-        }
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);        
         return generate(day, personnels, patients);
     }
 
