@@ -2,7 +2,6 @@ package beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +13,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import mock.beans.Laboratory;
-import mock.beans.Medecin;
 import mock.beans.Patient;
-import mock.beans.Pharmacie;
-
 import mock.beans.Personnel;
 import mock.dao.IPersonnelDAO;
 import mock.dao.impl.PersonnelDAO;
 import mock.services.generation.Generation;
+
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -53,10 +49,8 @@ public class MapBean implements Serializable {
 	private double maxLon = 0;
 	private double zoom = 13;
 	private List<Patient> users = new ArrayList<Patient>();
-    private int uuid;
-    private int personnelID;
 
-    public List<Patient> getUsers() {
+	public List<Patient> getUsers() {
 		return users;
 	}
 
@@ -72,31 +66,45 @@ public class MapBean implements Serializable {
 		return zoom;
 	}
 
-    public void init(int userUuid) {
-    	personnelID = userUuid;
-    }
+	public void init(int userUuid) {
 
-	public MapBean() {
-		
-        simpleModel = new DefaultMapModel();
-        
-        IPersonnelDAO personnelDAO = new PersonnelDAO();
-        Map<Personnel, List<Patient>> map = Generation.generateAll();
-    	Set cles = map.keySet();
-    	Iterator it = cles.iterator();     	
-    	while(it.hasNext()){
-    		Personnel cle = (Personnel) it.next();
-    		System.out.println(cle.toString());
-    		if (cle.getUuid() == personnelID){
-    			for (Patient p : map.get(cle)) {
-					if(!users.contains(p)){
-						users.add(p);
+		simpleModel = new DefaultMapModel();
+
+		Map<Personnel, List<Patient>> map = Generation.generateAll();
+		Set<Personnel> cles = map.keySet();
+		Iterator<Personnel> it = cles.iterator();     	
+		/*
+		 * On parcours la map pour analyser chaque personnel et trouver le bon
+		 */
+		while(it.hasNext()){
+			Personnel cle = (Personnel) it.next();
+			/*
+			 * Si l'id du personnel est le même que l'id du staff en cours on traite l'information
+			 */
+			if (cle.getUuid() == userUuid){
+				/*
+				 * Si la liste n'est pas vide on vérifie que l'on a pas déjà ajouter le patient dedans
+				 */
+				if(users.size() != 0){
+					/*
+					 * On récupère la liste des patients triée
+					 */
+					for (Patient p : map.get(cle)) {
+						
+							for (Patient patient : users) {
+								if (patient.getUuid() != p.getUuid()){
+									users.add(p);
+								}
+						}
 					}
+				}else{ //Sinon on ajoute la liste de patient
+					users.addAll(map.get(cle));
 				}
-    		}
-    	}
+				
+			}
+		}
 
-        final Geocoder geocoder = new Geocoder();
+		final Geocoder geocoder = new Geocoder();
 		GeocoderRequest geocoderRequest = null;
 		GeocodeResponse geocodeResponse = null;
 		List<GeocoderResult> results = new ArrayList<GeocoderResult>();
@@ -164,6 +172,10 @@ public class MapBean implements Serializable {
 							/ Math.sqrt(2 * (mapdisplay * mapdisplay)))
 							/ Math.log(2));
 		}
+	}
+
+	public MapBean() {
+
 	}
 
 	public MapModel getSimpleModel() {
