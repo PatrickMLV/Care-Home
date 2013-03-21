@@ -9,18 +9,21 @@
 
 <h:head>
 	<style type="text/css">
-        body {
-            background-color: #d2caec;
-        }
-
-        #menu {
-	        text-align: center;
-        }
-	</style>
+body {
+	background-color: #d2caec;
+}
+</style>
 </h:head>
 <h:body>
-    <h:graphicImage url="/resources/images/logo.png" height="75px" />
-	<h:outputText style="vertical-align: 150%" value="Care@Home"/>
-	<p:commandButton value="Logout" icon="ui-icon-circle-close" style="float:right" action="logout"/> 
+	<table style="width: 100%;">
+		<tr>
+			<td style="text-align:center;"><h:graphicImage
+					url="/resources/images/logo.png" height="75px" width="56px" /> <br />
+				<h:outputText value="Care@Home" /></td>
+			<td width="115px"><p:commandButton value="Logout" icon="ui-icon-circle-close"
+					style="float:right; width:115px;" action="logout" /></td>
+		</tr>
+	</table>
+
 </h:body>
 </html>

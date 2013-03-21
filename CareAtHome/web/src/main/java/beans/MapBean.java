@@ -3,7 +3,10 @@ package beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,7 +14,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import mock.beans.Laboratory;
+import mock.beans.Medecin;
 import mock.beans.Patient;
+import mock.beans.Pharmacie;
 
 import mock.beans.Personnel;
 import mock.dao.IPersonnelDAO;
@@ -48,6 +54,7 @@ public class MapBean implements Serializable {
 	private double zoom = 13;
 	private List<Patient> users = new ArrayList<Patient>();
     private int uuid;
+    private int personnelID;
 
     public List<Patient> getUsers() {
 		return users;
@@ -66,17 +73,30 @@ public class MapBean implements Serializable {
 	}
 
     public void init(int userUuid) {
-        IPersonnelDAO personnelDAO = new PersonnelDAO();
-        List<Patient> patients = Generation.generateAll().get(personnelDAO.getcaregiverByUuid(userUuid));
-        if (patients != null){
-        	users.addAll(patients);
-        }
+    	personnelID = userUuid;
     }
 
 	public MapBean() {
+		
         simpleModel = new DefaultMapModel();
+        
+        IPersonnelDAO personnelDAO = new PersonnelDAO();
+        Map<Personnel, List<Patient>> map = Generation.generateAll();
+    	Set cles = map.keySet();
+    	Iterator it = cles.iterator();     	
+    	while(it.hasNext()){
+    		Personnel cle = (Personnel) it.next();
+    		System.out.println(cle.toString());
+    		if (cle.getUuid() == personnelID){
+    			for (Patient p : map.get(cle)) {
+					if(!users.contains(p)){
+						users.add(p);
+					}
+				}
+    		}
+    	}
 
-		final Geocoder geocoder = new Geocoder();
+        final Geocoder geocoder = new Geocoder();
 		GeocoderRequest geocoderRequest = null;
 		GeocodeResponse geocodeResponse = null;
 		List<GeocoderResult> results = new ArrayList<GeocoderResult>();

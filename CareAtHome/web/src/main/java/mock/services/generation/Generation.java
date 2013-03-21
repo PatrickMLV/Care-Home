@@ -59,19 +59,19 @@ public class Generation {
 
         for (Patient patient: patients) {
             switch (day) {
-                case 0:
+                case Calendar.MONDAY:
                     disp = patient.getMonday();
                     break;
-                case 1:
+                case Calendar.TUESDAY:
                     disp = patient.getTuesday();
                     break;
-                case 2:
+                case Calendar.WEDNESDAY:
                     disp = patient.getWednesday();
                     break;
-                case 3:
+                case Calendar.THURSDAY:
                     disp = patient.getThursday();
                     break;
-                case 4:
+                case Calendar.FRIDAY:
                     disp = patient.getFriday();
                     break;
                 default:
