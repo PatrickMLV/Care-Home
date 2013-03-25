@@ -2,8 +2,10 @@ package beans;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import mock.beans.Patient;
@@ -54,6 +56,26 @@ public class PatientManagerBean {
 	}
 	
 	public void createPatient(){
+		if (newPatient.getFirstName().isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null, 
+		        		new FacesMessage(FacesMessage.SEVERITY_ERROR, "The first name musn't be null","adding patient error message"));  
+		    return ;    
+		}
+		if (newPatient.getLastName().isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null, 
+		        		new FacesMessage(FacesMessage.SEVERITY_ERROR, "The last name musn't be null","adding patient error message"));  
+		    return ;    
+		}
+		if (newPatient.getPhone().isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null, 
+		        		new FacesMessage(FacesMessage.SEVERITY_ERROR, "The phone number musn't be null","adding patient error message"));  
+		    return ;    
+		}
+		if (newPatient.getAddress().isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null, 
+		        		new FacesMessage(FacesMessage.SEVERITY_ERROR, "The address musn't be null","adding patient error message"));  
+		    return ;    
+		}
 		patientService.createPatient(newPatient);
 		newPatient = new Patient();
 	}

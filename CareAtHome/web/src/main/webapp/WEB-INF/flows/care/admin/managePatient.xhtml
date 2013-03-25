@@ -23,6 +23,7 @@
 		<!-- CONTENT -->
 		<h:form>
 			<p:layoutUnit position="center">
+				<p:messages />
 				<p:commandButton value="Add Patient" onclick="dlgAddPatient.show()" />
 
 				<p:dataTable var="patient" value="#{patientManagerBean.patientList}"
