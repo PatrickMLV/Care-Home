@@ -1,0 +1,31 @@
+Préaparation (Trouver un nom, Installation Git, CloudBees, GitHub) : 2h
+MCD : 3h
+Definition des Use Case : 2h
+
+H2 : 2h
+
+dao : 5h
+entity : 5h
+service : 5h
+
+Structure Maven + Spring : 2h
+API Google Maps : 3h
+Spring Security : 5h
+LDAP (Apache directory) : 5h
+
+
+Code source + tests unitaires :
+
+JSF 
+Vue Welcome : 1h
+Vue ajout patient : 1h
+Vue ajout staff : 1h
+Vue consultation tournée : 1h
+Vue Mise à jour patient : 1h
+Vue Constultation patient : 1h
+Vue mise à jour staff : 1h
+Vue consultation staff : 1h
+Vue évaluation : 1h
+
+Flow : 3h
+
