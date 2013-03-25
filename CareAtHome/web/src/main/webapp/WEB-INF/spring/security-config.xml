@@ -5,26 +5,12 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <s:http>
-    	<!-- 
-    	
-    	c'est désactivé !
-    	
-    	<s:intercept-url pattern="/**" access="ROLE_GROUP1"/>
-    	
-    	 -->
-        <!-- <s:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"/>
-        <s:intercept-url pattern="/secure/**" access="IS_AUTHENTICATED_REMEMBERED" />
-        <s:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
-
         <s:form-login />
         <s:anonymous />
         <s:logout />
     </s:http>
 
-
     <!-- Simple namespace-based configuration -->
-
-    <!-- <s:ldap-server ldif="classpath:users.ldif" port="33389"/> -->
 
     <s:authentication-manager alias="authenticationManager">
         <s:ldap-authentication-provider

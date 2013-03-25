@@ -7,8 +7,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<style>
-</style>
 </h:head>
 <h:body>
 	<p:layout fullPage="true">
@@ -60,10 +58,10 @@
 			<p:tabView orientation="left">
 				<p:tab title="Patient">
 					<p:panelGrid columns="2">
-						<h:outputText id="firstname" value="First name :" />
+						<h:outputText id="firstname" value="First name (*) :" />
 						<p:inputText value="#{patientManagerBean.newPatient.firstName}" />
 
-						<h:outputText id="lastname" value="Last name :" />
+						<h:outputText id="lastname" value="Last name (*) :" />
 						<p:inputText value="#{patientManagerBean.newPatient.lastName}" />
 
 						<h:outputText id="birthday" value="Birthday :" />
@@ -74,10 +72,10 @@
 						<h:outputText id="ssid" value="Ssid :" />
 						<p:inputText value="#{patientManagerBean.newPatient.ssid}" />
 
-						<h:outputText id="phone" value="Phone :" />
+						<h:outputText id="phone" value="Phone (*) :" />
 						<p:inputText value="#{patientManagerBean.newPatient.phone}" />
 
-						<h:outputText id="address" value="Address :" />
+						<h:outputText id="address" value="Address (*) :" />
 						<p:inputText value="#{patientManagerBean.newPatient.address}" />
 
 						<h:outputText id="priority" value="Priority :" />

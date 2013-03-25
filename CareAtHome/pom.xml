@@ -11,11 +11,7 @@
     <name>Care@Home</name>
 
 	<modules>
-        <module>persistence</module>
-        <module>persistence2</module>
-		<module>service</module>
 		<module>web</module>
-		<module>web2</module>
 		<module>umlv-dao</module>
 		<module>umlv-hibernate</module>
 	</modules>
